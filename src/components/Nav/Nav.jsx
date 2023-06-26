@@ -10,7 +10,8 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">Pokemon Teambuilder</h2>
+        {/* Custom pokemon font/color */}
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
@@ -27,9 +28,23 @@ function Nav() {
             <Link className="navLink" to="/user">
               Home
             </Link>
-
+{/* 
             <Link className="navLink" to="/info">
               Info Page
+            </Link> */}
+
+         
+
+            <Link className="navLink" to="/pokemon-teambuilder">
+            Team Builder
+            </Link>
+
+            <Link className="navLink" to="/pokemon-editor">
+           Editor
+            </Link>
+
+            <Link className="navLink" to="/pokemon-search">
+            Search
             </Link>
 
             <LogOutButton className="navLink" />
