@@ -35,15 +35,15 @@ function Nav() {
 
          
 
-            <Link className="navLink" to="/pokemon-teambuilder">
+            <Link className="navLink" to="teambuilder">
             Team Builder
             </Link>
 
-            <Link className="navLink" to="/pokemon-editor">
+            <Link className="navLink" to="/editor">
            Editor
             </Link>
 
-            <Link className="navLink" to="/pokemon-search">
+            <Link className="navLink" to="/search">
             Search
             </Link>
 

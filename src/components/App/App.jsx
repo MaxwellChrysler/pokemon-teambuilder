@@ -19,6 +19,10 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Search from '../SearchPage/SearchPage';
+import TeamBuilder from '../TeamBuilder/TeamBuilder';
+import EditPage from '../EditPage/EditPage';
+
 
 import './App.css';
 
@@ -59,6 +63,32 @@ function App() {
           >
             <UserPage />
           </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/search"
+          >
+            <Search />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/editor"
+          >
+            <EditPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/teambuilder"
+          >
+            <TeamBuilder />
+          </ProtectedRoute>
+
+
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
