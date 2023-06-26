@@ -1,0 +1,84 @@
+.App {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .App-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  input {
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  
+  .displayPokemon {
+    margin-top: 20px;
+    
+  }
+  
+  .displayPokemon h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .RadarChart-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .rendered-image{
+  
+    height:250px;
+    width:250px;
+  }
+  
+  
+  img {
+  
+    height: 250px;
+    width: 250px;
+    object-fit: fill;
+  }
+  .graph{
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+     width: 8em
+  
+  }
+  
+  .App-header {
+    background-color: #033076;
+    min-height: 70px;
+    padding: 20px;
+    color: white;
+  }
+  
+  /* 
+  .App-title {
+    background-color: #5db9ff;
+    width:100%;
+    height:100px; 
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    color:white;
+  
+  } */
+  
+  /* .App-title input{
+    width: 175px;
+    height: 25px;
+    border-radius: 10px;
+    border:2px solid #4ca8ee;
+    font-size:10px;
+  } */
