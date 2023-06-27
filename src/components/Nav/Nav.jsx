@@ -33,19 +33,23 @@ function Nav() {
               Info Page
             </Link> */}
 
-         
+            <Link className="navLink" to="/search">
+            Search
+            </Link>
 
             <Link className="navLink" to="teambuilder">
-            Team Builder
+            Team View
             </Link>
 
             <Link className="navLink" to="/editor">
            Editor
             </Link>
 
-            <Link className="navLink" to="/search">
-            Search
+            <Link className="navLink" to="PokemonItem">
+          Details
             </Link>
+
+           
 
             <LogOutButton className="navLink" />
           </>

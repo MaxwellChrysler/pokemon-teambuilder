@@ -1,8 +1,10 @@
 import axios from "axios";
 import "./SearchPage.css";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-// These are whats used to for the chart
+// Imports for Chart js
 import {
   Chart as ChartJS,
   LineElement,
@@ -10,16 +12,15 @@ import {
   PointElement,
   Tooltip,
   Legend,
-  LinearScale,
   Filler,
 } from "chart.js";
 import { Radar } from "react-chartjs-2";
 
+// Needed for Chart Js
 ChartJS.register(
   LineElement,
   RadialLinearScale,
   PointElement,
-  LinearScale,
   Tooltip,
   Legend,
   Filler
@@ -115,6 +116,12 @@ function SearchPage() {
       });
   };
 
+// const addToTeam {
+
+
+
+// }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -148,8 +155,12 @@ function SearchPage() {
             <img id="rendered-image" src={pokemon.officalArt} />
             {/* <img id="rendered-image" src={pokemon.officalArtShiny} /> */}
 
-            <div className="graph " style={{ width: "425px", padding: "20px" }}>
+            <div className="graph" style={{ width: "425px", padding: "20px" }}>
               <Radar data={data} options={options}></Radar>
+            </div> 
+            <div className="add-to-team">
+              <button>add to team</button>
+              
             </div>
             <h3>
               Spieces: {pokemon.species} ID: {pokemon.id}
