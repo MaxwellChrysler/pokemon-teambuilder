@@ -78,6 +78,7 @@ function SearchPage() {
       },
     },
   };
+
   const searchPokemon = () => {
     // the ${pokemon} name is form usestate to dynaically change what the api is searching for based on the 
     axios
@@ -116,11 +117,14 @@ function SearchPage() {
       });
   };
 
-// const addToTeam {
+const addToTeam = () => {
 
+  dispatch({
+    type: 'ADD_POKEMON',
+    payload: pokemon.id // This might be an issue because I have a property being id 
+})
 
-
-// }
+}
 
   return (
     <div className="App">
@@ -138,15 +142,22 @@ function SearchPage() {
       <br />
 
       <button className="searchPokemon" onClick={searchPokemon}>
-        Pick a pokemon any pokemon
+      Search for Pokemon
       </button>
       {/* if a poke is not chosen prompt user to pick one if they have display their name */}
 
       <div className="displayPokemon">
         {!pokemonChosen ? (
-          <h1>please pick a pokemon</h1>
-        ) : (
+          <h1>Search for Pokemon</h1>
+        ) : 
+        
+        // Top of the screen 
+        
+        
+        (
           <>
+
+          
             <h1>{pokemon.name}</h1>
 
             {/* <img id="rendered-image" src={pokemon.shiny_img}/> renders the shiny version*/}
@@ -155,6 +166,14 @@ function SearchPage() {
             <img id="rendered-image" src={pokemon.officalArt} />
             {/* <img id="rendered-image" src={pokemon.officalArtShiny} /> */}
 
+
+            <div>
+            <button className="addtoteam" onClick = {addToTeam}>
+            Add to team
+            </button>
+
+            {/* <img src ="../../../public/images//Users/maxwellchrysler/Prime work/tier2/Poké_Ball_icon.svg.png"></img> */}
+          </div>
             <div className="graph" style={{ width: "425px", padding: "20px" }}>
               <Radar data={data} options={options}></Radar>
             </div> 

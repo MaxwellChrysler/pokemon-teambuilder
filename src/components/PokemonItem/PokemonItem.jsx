@@ -41,6 +41,8 @@ const theme = createTheme({
 function PokemonItem () {
  
 
+
+
 // This needs to import just one pokemon and then 
   const [creatureList, setCreatureList] = useState([
     {name: 'Pichu', origin: 'Gen 2', image: 'https://ssb.wiki.gallery/images/thumb/c/c1/Pichu_SSBU.png/1200px-Pichu_SSBU.png'},
@@ -84,7 +86,7 @@ function PokemonItem () {
                   </Typography>
                   <CardActions>
                     <Button variant='contained' size="small"></Button>
-                    <Button size="small">Learn More</Button>
+                    <Button size="small"></Button>
                   </CardActions>
                 </CardContent>
               </Card>

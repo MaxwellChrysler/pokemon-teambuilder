@@ -62,6 +62,14 @@
     padding: 20px;
     color: white;
   }
+
+  .addtoteam{
+    align-items: left;
+    justify-content: left;
+    display: flex;
+    margin-left: auto;
+
+  }
   
   /* 
   .App-title {
