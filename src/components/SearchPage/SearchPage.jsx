@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
+
+
 // Imports for Chart js
 import {
   Chart as ChartJS,
@@ -28,7 +30,7 @@ ChartJS.register(
 
 function SearchPage() {
 
-
+  const dispatch = useDispatch();
   const [pokemonName, setPokemonName] = useState("");
   const [pokeID, setPokeID] = useState({ id: "" });
   const [pokemonChosen, setPokemonChosen] = useState(false); // this is to hold that data the this pokemon is the one that is currently being searched for
