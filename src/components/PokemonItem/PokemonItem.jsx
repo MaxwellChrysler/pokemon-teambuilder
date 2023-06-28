@@ -58,7 +58,7 @@ function PokemonItem() {
     return <div>Loading...</div>;
   }
 
-  const selectedPokemon = pokemon[1]; // Accessing the first Pokemon
+  const selectedPokemon = pokemon[0]; // Accessing the first Pokemon
   console.log(selectedPokemon.img,'image')
 
   return (
@@ -67,7 +67,7 @@ function PokemonItem() {
         <Grid container spacing={2}>
           <Grid item sm={6} lg={3}>
             <Card sx={{ width: '100%' }} style={{ backgroundColor: "white" }}>
-              <CardMedia sx={{ height: 140 }} image={selectedPokemon.img} title={selectedPokemon.name} />
+              <CardMedia sx={{ height: 140 }} image={selectedPokemon.officalArt} title={selectedPokemon.name} />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {selectedPokemon.name}

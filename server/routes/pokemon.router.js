@@ -47,10 +47,11 @@ router.post("/", (req, res) => {
     const speed = req.body.speed;
     const nickname = null;
     const img = req.body.img;
+    const officalArt = req.body.officalArt;
     // const userID = req.body
 
-    let postQuery = `INSERT INTO poke_stats ("pokeID","name","hp","attack","defense","spAttack","spDefense","speed","nickname","img")
-  VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`;
+    let postQuery = `INSERT INTO poke_stats ("pokeID","name","hp","attack","defense","spAttack","spDefense","speed","nickname","img", "officalArt")
+  VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`;
     pool
       .query(postQuery, [
         pokeID,
@@ -63,6 +64,7 @@ router.post("/", (req, res) => {
         speed,
         nickname,
         img,
+        officalArt,
       ])
       .then((response) => {
         console.log("Post was sucessful", response);
