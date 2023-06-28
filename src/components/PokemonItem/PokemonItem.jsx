@@ -14,6 +14,9 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { orange } from '@mui/material/colors';
 import ('./PokemonItem.css'); 
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
+
 
 
 const theme = createTheme({
@@ -45,11 +48,19 @@ function PokemonItem () {
 
 // This needs to import just one pokemon and then 
   const [creatureList, setCreatureList] = useState([
-    {name: 'Pichu', origin: 'Gen 2', image: 'https://ssb.wiki.gallery/images/thumb/c/c1/Pichu_SSBU.png/1200px-Pichu_SSBU.png'},
-    {name: 'Sphinx', origin: 'Egypt', image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/890.png'},
+  //   {name: 'Pichu', origin: 'Gen 2', image: 'https://ssb.wiki.gallery/images/thumb/c/c1/Pichu_SSBU.png/1200px-Pichu_SSBU.png'},
+  //   {name: 'Sphinx', origin: 'Egypt', image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/890.png'},
     {name: 'Jackalope', origin: 'America', image: 'https://archives.bulbagarden.net/media/upload/c/cf/0569Garbodor.png'}
   ]);
   
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    history.push("/Details");
+    console.log('test')
+  };
+
+  const history = useHistory();
+
   return (
     <ThemeProvider theme={theme}>
       <Container fixed>
@@ -65,11 +76,14 @@ function PokemonItem () {
             // 2 columns. Extra small screens will
             // by default display 1 column.
             <Grid display='flex' sx={{width: '100%'}} item sm={6} lg={3} key={creature.name}>
-              <Card sx={{width: '100%'}}>
+              <Card sx={{width: '100%'}}
+              style={{backgroundColor: "red"}}
+              >
                 <CardMedia
                   sx={{ height: 140 }}
                   image={creature.image}
                   title={creature.name}
+
                 />
                 <CardContent>
                   <Typography
@@ -82,11 +96,11 @@ function PokemonItem () {
                     variant="body2"
                     color="text.secondary"
                   > 
-                    This creature is from {creature.origin}. You may also find this in your back yard during the summer.
+                    This creature is from {creature.origin}. 
                   </Typography>
                   <CardActions>
-                    <Button variant='contained' size="small"></Button>
-                    <Button size="small"></Button>
+                    <Button variant='contained' size="small">Derp</Button>
+                    <Button  onClick={handleSubmit} className = "details"size="small">Details </Button>
                   </CardActions>
                 </CardContent>
               </Card>

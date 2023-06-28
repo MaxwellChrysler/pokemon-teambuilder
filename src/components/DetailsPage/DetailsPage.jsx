@@ -1,4 +1,5 @@
 import React from 'react';
+import PokemonItem from '../PokemonItem/PokemonItem';
 import ('./DetailsPage.css')
 // import ('../PokemonItem.jsx')
 // import ('../RadarChart.jax') Need to decide if I
@@ -12,6 +13,7 @@ function DetailsPage() {
   return (
     <div className="container">
       <p>Details page </p>
+      <PokemonItem/>
     </div>
   );
 }

@@ -86,6 +86,14 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/details"
+          >
+            <Details />
+          </ProtectedRoute>
+
+          <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
             path="/teambuilder"
