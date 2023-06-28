@@ -1,4 +1,5 @@
 import React from 'react';
+import PokemonItem from '../PokemonItem/PokemonItem';
 import ('./EditPage.css')
 
 // This is one of our simplest components
@@ -10,6 +11,7 @@ function EditPage() {
   return (
     <div className="container">
       <p>Edit page </p>
+      <PokemonItem/>
     </div>
   );
 }

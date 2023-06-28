@@ -44,13 +44,13 @@ const theme = createTheme({
 function PokemonItem () {
  
 
-
+// dispatch the get in order to display the pokemon
 
 // This needs to import just one pokemon and then 
   const [creatureList, setCreatureList] = useState([
-  //   {name: 'Pichu', origin: 'Gen 2', image: 'https://ssb.wiki.gallery/images/thumb/c/c1/Pichu_SSBU.png/1200px-Pichu_SSBU.png'},
+    {name: 'Pichu', origin: 'Gen 2', image: 'https://ssb.wiki.gallery/images/thumb/c/c1/Pichu_SSBU.png/1200px-Pichu_SSBU.png'},
   //   {name: 'Sphinx', origin: 'Egypt', image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/890.png'},
-    {name: 'Jackalope', origin: 'America', image: 'https://archives.bulbagarden.net/media/upload/c/cf/0569Garbodor.png'}
+    // {name: 'Jackalope', origin: 'America', image: 'https://archives.bulbagarden.net/media/upload/c/cf/0569Garbodor.png'}
   ]);
   
   const handleSubmit = (event) => {
@@ -77,7 +77,7 @@ function PokemonItem () {
             // by default display 1 column.
             <Grid display='flex' sx={{width: '100%'}} item sm={6} lg={3} key={creature.name}>
               <Card sx={{width: '100%'}}
-              style={{backgroundColor: "red"}}
+              style={{backgroundColor: "white"}}
               >
                 <CardMedia
                   sx={{ height: 140 }}

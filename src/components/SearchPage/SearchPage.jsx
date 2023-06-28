@@ -31,6 +31,7 @@ ChartJS.register(
 function SearchPage() {
 
   const dispatch = useDispatch();
+  const pokemonReducer = useSelector((store) => store.pokemon)
   const [pokemonName, setPokemonName] = useState("");
   const [pokeID, setPokeID] = useState({ id: "" });
   const [pokemonChosen, setPokemonChosen] = useState(false); // this is to hold that data the this pokemon is the one that is currently being searched for
@@ -81,6 +82,14 @@ function SearchPage() {
     },
   };
 
+  const searchpoke = (event) => { // rename after refactor 
+    event.preventDefault();
+    console.log('search is:', pokemonName);
+    dispatch({ type:"FETCH_POKEMON", payload: pokemonName})
+    setPokemonName(''); // clear search bar after search is finished 
+
+  }
+
   const searchPokemon = () => {
     // the ${pokemon} name is form usestate to dynaically change what the api is searching for based on the 
     axios
@@ -110,7 +119,7 @@ function SearchPage() {
           type: response.data.types[0].type.name,
         });
 
-        console.log(pokemon.id);
+        console.log(pokemon);
 
         setPokemonChosen(true); //this is to change the poke to be chosen after its info has been displayed
       })
@@ -119,11 +128,13 @@ function SearchPage() {
       });
   };
 
-const addToTeam = () => {
-
+const addToTeam = (event) => {
+  event.preventDefault();
+  console.log('search is:', pokemonName);
   dispatch({
-    type: 'ADD_POKEMON',
-    payload: pokemon.id // This might be an issue because I have a property being id 
+    
+    type: 'POST_POKEMON', // This is for putting pokemon to team
+    payload: pokemon // This is in reference to the const
 })
 
 }
