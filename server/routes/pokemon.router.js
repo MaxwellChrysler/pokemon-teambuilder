@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
   // POST route code here
   if (req.isAuthenticated()) {
     // This is all the data that we are grabbing to put into the database
-    const id = req.body.id;
+    const pokeID = req.body.id;
     const name = req.body.name;
     const hp = req.body.hp;
     const attack = req.body.attack;
@@ -33,14 +33,15 @@ router.post("/", (req, res) => {
     const spAttack = req.body.spAttack;
     const spDefense = req.body.spDefense;
     const speed = req.body.speed;
-    const weight = req.body.weight;
+    const nickname = null;
     const img = req.body.img;
+    // const userID = req.body
 
-    let postQuery = `INSERT INTO poke-stats ("hp","attack","defense","spAttack","spDefense","speed","nickname","user_id","name")
-  VALUES (1$,$2,$3,$4,$5,$6,$7,$8,$9)`;
+    let postQuery = `INSERT INTO poke_stats ("pokeID","name","hp","attack","defense","spAttack","spDefense","speed","nickname","img")
+  VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`;
     pool
       .query(postQuery, [
-        id,
+        pokeID,
         name,
         hp,
         attack,
@@ -48,7 +49,8 @@ router.post("/", (req, res) => {
         spAttack,
         spDefense,
         speed,
-        weight,
+        nickname,
+
         img,
       ])
       .then((response) => {

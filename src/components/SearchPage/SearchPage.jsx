@@ -45,8 +45,8 @@ function SearchPage() {
     hp: "",
     attack: "",
     defense: "",
-    specialAttack: "",
-    specialDefense: "",
+    spAttack: "",
+    spDefense: "",
     speed: "",
     type: "",
     type2: "", // This can stay but displaying the second type is a problem
@@ -63,8 +63,8 @@ function SearchPage() {
           pokemon.attack,
           pokemon.defense,
           pokemon.speed,
-          pokemon.specialDefense,
-          pokemon.specialAttack,
+          pokemon.spDefense,
+          pokemon.spAttack,
         ], // This is where I will need to be inserting each pokemons stats This will need to be conditionall rendered just like the results
         backgroundColor: "rgba(255,0,0, .2)",
         borderColor: ["rgba(255,99,132,.7)"],
@@ -113,8 +113,8 @@ function SearchPage() {
           hp: response.data.stats[0].base_stat,
           attack: response.data.stats[1].base_stat,
           defense: response.data.stats[2].base_stat,
-          specialAttack: response.data.stats[3].base_stat,
-          specialDefense: response.data.stats[4].base_stat,
+          spAttack: response.data.stats[3].base_stat,
+          spDefense: response.data.stats[4].base_stat,
           speed: response.data.stats[5].base_stat,
           type: response.data.types[0].type.name,
         });
@@ -201,8 +201,8 @@ const addToTeam = (event) => {
             <h3>HP: {pokemon.hp}</h3>
             <h3>Attack: {pokemon.attack}</h3>
             <h3>Defense: {pokemon.defense}</h3>
-            <h3>Special attack: {pokemon.specialAttack}</h3>
-            <h3>Special defense: {pokemon.specialDefense}</h3>
+            <h3>Special attack: {pokemon.spAttack}</h3>
+            <h3>Special defense: {pokemon.spDefense}</h3>
             <h3>Speed: {pokemon.speed}</h3>
             <h3>
               Type: {pokemon.type} {pokemon.type2}

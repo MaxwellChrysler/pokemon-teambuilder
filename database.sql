@@ -9,7 +9,7 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
-CREATE TABLE "poke-stats" (
+CREATE TABLE "poke_stats" (
     "id"  SERIAL PRIMARY KEY,
     "hp" int,
     "attack" int,
