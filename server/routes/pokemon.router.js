@@ -3,20 +3,32 @@ const pool = require("../modules/pool");
 const router = express.Router();
 const axios = require("axios");
 
-// NEEDS WORK TO FINALZE WHAT IS ACTUALLY BEING ADDED AND WOULD NEED TO EDIT THE DATABSE TABLE
-router.get("/", (req, res) => {
-  axios
-    .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-    .then((response) => {
-      console.log("app axios get is working", response);
-      res.send(response.data);
+// router.get("/", (req, res) => {
+//   axios
+//     .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+//     .then((response) => {
+//       console.log("app axios get is working", response);
+//       res.send(response.data);
 
-      // GET route code here
-    })
-    .catch((error) => {
-      console.log("error in pokemon router", error);
-    });
-});
+//       // GET route code here
+//     })
+//     .catch((error) => {
+//       console.log("error in pokemon router", error);
+//     });
+// });
+
+router.get('/', (req,res) =>{
+  const queryText = `SELECT * FROM "poke_stats"`;
+  
+  pool.query(queryText)
+  .then(result => {
+    res.send(result.rows)
+  })
+  .catch(err => {
+    console.log('error geting poke', err);
+    res.sendStatus(200); // For testing only, can be removed
+  })
+})
 
 /**
  * POST route template
@@ -50,7 +62,6 @@ router.post("/", (req, res) => {
         spDefense,
         speed,
         nickname,
-
         img,
       ])
       .then((response) => {

@@ -190,10 +190,7 @@ const addToTeam = (event) => {
             <div className="graph" style={{ width: "425px", padding: "20px" }}>
               <Radar data={data} options={options}></Radar>
             </div> 
-            <div className="add-to-team">
-              <button>add to team</button>
-              
-            </div>
+           
             <h3>
               Spieces: {pokemon.species} ID: {pokemon.id}
             </h3>

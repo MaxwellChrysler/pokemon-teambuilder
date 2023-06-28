@@ -2,7 +2,9 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import {useState} from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -11,13 +13,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { orange } from '@mui/material/colors';
 import ('./PokemonItem.css'); 
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
-
-
 
 const theme = createTheme({
   status: {
@@ -41,76 +39,53 @@ const theme = createTheme({
   },
 });
 
-function PokemonItem () {
- 
+function PokemonItem() {
+  const pokemon = useSelector((store) => store.pokemon);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-// dispatch the get in order to display the pokemon
+  useEffect(() => {
+    dispatch({ type: "FETCH_POKEMON" });
+  }, []);
 
-// This needs to import just one pokemon and then 
-  const [creatureList, setCreatureList] = useState([
-    {name: 'Pichu', origin: 'Gen 2', image: 'https://ssb.wiki.gallery/images/thumb/c/c1/Pichu_SSBU.png/1200px-Pichu_SSBU.png'},
-  //   {name: 'Sphinx', origin: 'Egypt', image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/890.png'},
-    // {name: 'Jackalope', origin: 'America', image: 'https://archives.bulbagarden.net/media/upload/c/cf/0569Garbodor.png'}
-  ]);
-  
   const handleSubmit = (event) => {
     event.preventDefault();
     history.push("/Details");
-    console.log('test')
+
   };
 
-  const history = useHistory();
+  if (!pokemon || pokemon.length === 0) {
+    return <div>Loading...</div>;
+  }
+
+  const selectedPokemon = pokemon[1]; // Accessing the first Pokemon
+  console.log(selectedPokemon.img,'image')
 
   return (
     <ThemeProvider theme={theme}>
       <Container fixed>
-        <Typography
-          gutterBottom
-          variant="h1"
-          component="div">
-            
-        </Typography>
         <Grid container spacing={2}>
-          {creatureList.map(creature => (
-            // small screens and larger will display
-            // 2 columns. Extra small screens will
-            // by default display 1 column.
-            <Grid display='flex' sx={{width: '100%'}} item sm={6} lg={3} key={creature.name}>
-              <Card sx={{width: '100%'}}
-              style={{backgroundColor: "white"}}
-              >
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image={creature.image}
-                  title={creature.name}
-
-                />
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div">
-                      {creature.name}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                  > 
-                    This creature is from {creature.origin}. 
-                  </Typography>
-                  <CardActions>
-                    <Button variant='contained' size="small">Derp</Button>
-                    <Button  onClick={handleSubmit} className = "details"size="small">Details </Button>
-                  </CardActions>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+          <Grid item sm={6} lg={3}>
+            <Card sx={{ width: '100%' }} style={{ backgroundColor: "white" }}>
+              <CardMedia sx={{ height: 140 }} image={selectedPokemon.img} title={selectedPokemon.name} />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {selectedPokemon.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  This creature is from {selectedPokemon.id}.
+                </Typography>
+                <CardActions>
+                  <Button variant="contained" size="small">Derp</Button>
+                  <Button onClick={handleSubmit} className="details" size="small">Details</Button>
+                </CardActions>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
       </Container>
     </ThemeProvider>
   );
-
 }
 
 export default PokemonItem;
