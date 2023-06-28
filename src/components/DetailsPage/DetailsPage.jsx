@@ -1,21 +1,22 @@
-import React from 'react';
-import PokemonItem from '../PokemonItem/PokemonItem';
-import ('./DetailsPage.css')
-// import ('../PokemonItem.jsx')
-// import ('../RadarChart.jax') Need to decide if I
+import React from "react";
+import { useSelector } from "react-redux";
+import PokemonItem from "../PokemonItem/PokemonItem";
+import ("./DetailsPage.css");
 
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
+function TeamBuilder() {
+  const pokemon = useSelector((store) => store.pokemon);
+  
+  if (!pokemon || pokemon.length === 0) {
+    return <div>Loading...</div>;
+  }
 
-function DetailsPage() {
+  const selectedPokemon = pokemon[0]; // Selecting the first Pokemon
+
   return (
-    <div className="container">
-      <p>Details page </p>
-      <PokemonItem/>
+    <div className="displayTeam">
+      <PokemonItem selectedPokemon={selectedPokemon} />
     </div>
   );
 }
 
-export default DetailsPage;
+export default TeamBuilder;

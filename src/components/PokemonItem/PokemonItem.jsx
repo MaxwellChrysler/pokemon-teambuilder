@@ -39,10 +39,11 @@ const theme = createTheme({
   },
 });
 
-function PokemonItem() {
+function PokemonItem({selectedPokemon}) {
   const pokemon = useSelector((store) => store.pokemon);
   const dispatch = useDispatch();
   const history = useHistory();
+console.log(selectedPokemon)
 
   useEffect(() => {
     dispatch({ type: "FETCH_POKEMON" });
@@ -51,21 +52,24 @@ function PokemonItem() {
   const handleSubmit = (event) => {
     event.preventDefault();
     history.push("/Details");
-
+// access a reducer on component refactor in teambuilder that updates reducer as it calls the pokemon/cards
+// by passing a prop
   };
 
   if (!pokemon || pokemon.length === 0) {
-    return <div>Loading...</div>;
+    return <div>Please add members to your team!...</div>;
   }
 
-  const selectedPokemon = pokemon[0]; // Accessing the first Pokemon
-  console.log(selectedPokemon.img,'image')
+  // const  = pokemon[0]; // Accessing the first Pokemon This needs to be changed to be whatever pokemon is clicked on from
+ 
 
-  return (
+  
+  return ( (selectedPokemon ?
+    <div>
     <ThemeProvider theme={theme}>
       <Container fixed>
-        <Grid container spacing={2}>
-          <Grid item sm={6} lg={3}>
+        <Grid >
+          <Grid > 
             <Card sx={{ width: '100%' }} style={{ backgroundColor: "white" }}>
               <CardMedia sx={{ height: 140 }} image={selectedPokemon.officalArt} title={selectedPokemon.name} />
               <CardContent>
@@ -73,10 +77,10 @@ function PokemonItem() {
                   {selectedPokemon.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  This creature is from {selectedPokemon.id}.
+                  {selectedPokemon.name}'s pokedex entry is {selectedPokemon.pokeID}.
                 </Typography>
                 <CardActions>
-                  <Button variant="contained" size="small">Derp</Button>
+                  <Button variant="contained" size="small">misc</Button>
                   <Button onClick={handleSubmit} className="details" size="small">Details</Button>
                 </CardActions>
               </CardContent>
@@ -85,7 +89,13 @@ function PokemonItem() {
         </Grid>
       </Container>
     </ThemeProvider>
+    </div> : <div>
+      loading
+    </div>
+  )
   );
 }
 
 export default PokemonItem;
+// container spacing={2}
+// item sm={6} lg={3}

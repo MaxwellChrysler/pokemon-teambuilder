@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PokemonItem from "../PokemonItem/PokemonItem";
 import("./TeamBuilder.css");
 
@@ -8,6 +9,8 @@ import("./TeamBuilder.css");
 // or even care what the redux state is
 
 function TeamBuilder() {
+  const pokemon = useSelector((store) => store.pokemon);
+  
   // const [pokemonTeam, setPokemonTeam] = useState([
   //   {
   //     name: pokemon.name,
@@ -23,13 +26,18 @@ function TeamBuilder() {
 
 // will need to do a .map for all the cards 
 
+
+
   return (
-    
-    <div className="container">
-      <p>TeamBuilder page </p>
-      <PokemonItem/>
+    <div className="displayTeam">
+      {pokemon.map((selectedPokemon) => (
+        <PokemonItem key={selectedPokemon.name} selectedPokemon={selectedPokemon} />
+      ))}
     </div>
   );
 }
+
+
+
 
 export default TeamBuilder;
