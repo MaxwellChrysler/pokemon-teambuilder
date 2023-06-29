@@ -2,22 +2,32 @@ import React from "react";
 import { useSelector } from "react-redux";
 import PokemonItem from "../PokemonItem/PokemonItem";
 import ("./DetailsPage.css");
+import RadarChart from '../RadarChart/RadarChart'
+import { useParams } from "react-router-dom";
 
 function Details() {
   const pokemon = useSelector((store) => store.pokemon);
+  const params = useParams();
   
   if (!pokemon || pokemon.length === 0) {
     return <div>You should add pokemon to your team</div>; // if theres nothing in the array it will display this instead of nothing
   }
 
-  const selectedPokemon = pokemon[1]; // Selecting the first Pokemon 
+  const selectedPokemon = pokemon.find(item=> item.id === Number(params.id)); // Selecting the first Pokemon 
 
+console.log(selectedPokemon)
+console.log(params)
+  
   
   return (
     <div className="displayTeam">
       <PokemonItem
       
-       selectedPokemon={selectedPokemon} />
+       selectedPokemon={selectedPokemon} 
+       />
+       
+
+
     </div>
   );
 }

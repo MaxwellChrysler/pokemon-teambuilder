@@ -43,18 +43,13 @@ function PokemonItem({selectedPokemon}) {
   const pokemon = useSelector((store) => store.pokemon);
   const dispatch = useDispatch();
   const history = useHistory();
-console.log(selectedPokemon)
+// console.log(selectedPokemon)
 
   useEffect(() => {
     dispatch({ type: "FETCH_POKEMON" });
   }, []);
 
-  const handleSubmit = (event) => { // this should be in team builder by the end
-    event.preventDefault();
-    history.push("/Details");
-// access a reducer on component refactor in teambuilder that updates reducer as it calls the pokemon/cards
-// by passing a prop
-  };
+  
 
   if (!pokemon || pokemon.length === 0) {
     return <div>Please add members to your team!...</div>;
@@ -63,7 +58,7 @@ console.log(selectedPokemon)
   // const  = pokemon[0]; // Accessing the first Pokemon This needs to be changed to be whatever pokemon is clicked on from
  
 
-  
+  // use params 
   return ( (selectedPokemon ?
     <div>
     <ThemeProvider theme={theme}>

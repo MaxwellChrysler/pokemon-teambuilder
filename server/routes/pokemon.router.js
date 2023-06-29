@@ -3,7 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 const axios = require("axios");
 
-// router.get("/", (req, res) => {
+// router.get("/", (req, res) => { // api get that is currently in the search page
 //   axios
 //     .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
 //     .then((response) => {
@@ -29,6 +29,23 @@ router.get('/', (req,res) =>{
     res.sendStatus(200); // For testing only, can be removed
   })
 })
+
+
+router.delete("/", (req, res) => {
+	// endpoint functionality
+  console.log('IN DELETE ROUTE');
+  const queryText = `DELETE FROM "poke_stats" WHERE id=$1`;
+  pool.query(queryText, [req.body.id]) // or req.params.id
+  .then(() => {
+    res.sendStatus(200)
+  })
+  .catch((err) => {
+    console.log('error deleting', err);
+    res.sendStatus(500)
+  })
+});
+
+
 
 /**
  * POST route template

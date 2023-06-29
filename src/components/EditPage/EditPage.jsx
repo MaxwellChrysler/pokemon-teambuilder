@@ -6,6 +6,7 @@ import ('./EditPage.css')
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
+import { useParams } from "react-router-dom";
 
 
 // This is one of our simplest components
@@ -15,20 +16,31 @@ import Button from '@mui/material/Button';
 
 function EditPage() {
 
+  const params = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
   const pokemon = useSelector((store) => store.pokemon);
 
+ 
+const selectedPokemon = pokemon.find(item=> item.id === Number(params.id));
+
+  const deletePokemon = (id) =>{
+    console.log(pokemon[1].name,'test') //pokemon.id is undefined
+      dispatch({
+          type: 'DELETE_POKEMON',
+          payload: id // same issue as details
+          
+      })
+  }
 
 
-  
   return (
     <div className="container">
       {pokemon.map((selectedPokemon,i) => (
      <Card>
       <PokemonItem key={i} selectedPokemon={selectedPokemon} />
       <CardActions>
-                  <Button variant="contained" size="small">remove from team</Button>
+                  <Button onClick={ () => deletePokemon(selectedPokemon.id)}variant="contained" size="small">remove from team</Button>
                   <Button variant="contained" size="small">give nick name</Button>
                 </CardActions>
       </Card>
@@ -39,3 +51,16 @@ function EditPage() {
 }
 
 export default EditPage;
+
+// function Item({item}){
+//   // console.log(item);
+//   const user = useSelector((store) => store.user)
+
+//   const dispatch = useDispatch();
+
+//   const deleteItem = () =>{
+//       dispatch({
+//           type: 'DELETE_ITEMS',
+//           payload: item.id
+//       })
+//   }

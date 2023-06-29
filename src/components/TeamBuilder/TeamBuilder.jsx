@@ -33,11 +33,11 @@ useEffect(() => { // render on load i think lol
   dispatch({ type: "FETCH_POKEMON" });
 }, []);
 
-const getDetails = (chosen) => {
+const getDetails = (id) => {
 
-  console.log('details was clicked with an id', chosen)
-  dispatch ({type: 'GET_ONE_POKEMON', payload: chosen})
-  history.push('/details')
+  console.log('details was clicked with an id', id)
+  // dispatch ({type: 'GET_ONE_POKEMON', payload: id})
+  history.push(`/details/${id}`)
 }
 // or is the type going to be fetch pokemon
 // this.target.value or something
@@ -50,7 +50,7 @@ const getDetails = (chosen) => {
         <PokemonItem key={i} selectedPokemon={selectedPokemon} />
         <CardActions>
                   <Button variant="contained" size="small">misc</Button>
-                  <Button onClick={getDetails} className="details" size="small">Details </Button>
+                  <Button onClick={()=>getDetails(selectedPokemon.id)} className="details" size="small">Details </Button>
                 </CardActions>
         </Card>
       ))}
