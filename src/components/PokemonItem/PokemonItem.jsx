@@ -68,9 +68,9 @@ console.log(selectedPokemon)
     <div>
     <ThemeProvider theme={theme}>
       <Container fixed>
-        <Grid >
-          <Grid > 
-            <Card sx={{ width: '100%' }} style={{ backgroundColor: "white" }}>
+        <Grid spacing={2} >
+          <Grid item xs={12} > 
+            <Card sx={{ width: 240 }} >
               <CardMedia sx={{ height: 140 }} image={selectedPokemon.officalArt} title={selectedPokemon.name} />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
@@ -78,11 +78,9 @@ console.log(selectedPokemon)
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {selectedPokemon.name}'s pokedex entry is {selectedPokemon.pokeID}.
+                 
                 </Typography>
-                <CardActions>
-                  <Button variant="contained" size="small">misc</Button>
-                  <Button onClick={handleSubmit} className="details" size="small">Details</Button>
-                </CardActions>
+                
               </CardContent>
             </Card>
           </Grid>

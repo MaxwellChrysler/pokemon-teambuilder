@@ -10,11 +10,14 @@ function Details() {
     return <div>You should add pokemon to your team</div>; // if theres nothing in the array it will display this instead of nothing
   }
 
-  const selectedPokemon = pokemon[0]; // Selecting the first Pokemon 
+  const selectedPokemon = pokemon[1]; // Selecting the first Pokemon 
 
+  
   return (
     <div className="displayTeam">
-      <PokemonItem selectedPokemon={selectedPokemon} />
+      <PokemonItem
+      
+       selectedPokemon={selectedPokemon} />
     </div>
   );
 }

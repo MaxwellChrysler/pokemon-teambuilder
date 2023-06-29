@@ -1,6 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PokemonItem from "../PokemonItem/PokemonItem";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Card from '@mui/material/Card';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { orange } from '@mui/material/colors';
 import("./TeamBuilder.css");
 
 // This is one of our simplest components
@@ -9,33 +20,41 @@ import("./TeamBuilder.css");
 // or even care what the redux state is
 
 function TeamBuilder() {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const pokemon = useSelector((store) => store.pokemon);
   
-  // const [pokemonTeam, setPokemonTeam] = useState([
-  //   {
-  //     name: pokemon.name,
-  //     hp: pokemon.hp,
-  //     attack: pokemon.attack,
-  //     defense: pokemon.defense,
-  //     speed: pokemon.speed,
-  //     spDefense: pokemon.specialDefense,
-  //     spAttack: pokemon.specialAttack,
-  //     officalArtwork: pokemon.officalArtwork,
-  //   },
-  // ]);
+//   useEffect(() => {
+//     dispatch({ type: 'FETCH_POKEMON' }); 
+//        <div key={movie.id} onClick={() => getDetails(movie)}>
+// }, []);
 
-// will need to do a .map for all the cards 
+useEffect(() => { // render on load i think lol
+  dispatch({ type: "FETCH_POKEMON" });
+}, []);
 
-const getDetails = (pokemon) => {
-  console.log()
+const getDetails = (chosen) => {
+
+  console.log('details was clicked with an id', chosen)
+  dispatch ({type: 'GET_ONE_POKEMON', payload: chosen})
+  history.push('/details')
 }
+// or is the type going to be fetch pokemon
+// this.target.value or something
 
 
   return (
     <div className="displayTeam">
-      {pokemon.map((selectedPokemon) => (
-        <PokemonItem key={selectedPokemon.name} selectedPokemon={selectedPokemon} />
+      {pokemon.map((selectedPokemon,i) => (
+        <Card  >
+        <PokemonItem key={i} selectedPokemon={selectedPokemon} />
+        <CardActions>
+                  <Button variant="contained" size="small">misc</Button>
+                  <Button onClick={getDetails} className="details" size="small">Details </Button>
+                </CardActions>
+        </Card>
       ))}
+ 
     </div>
   );
 }
