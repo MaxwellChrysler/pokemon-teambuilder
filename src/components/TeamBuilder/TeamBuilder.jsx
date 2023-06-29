@@ -26,6 +26,9 @@ function TeamBuilder() {
 
 // will need to do a .map for all the cards 
 
+const getDetails = (pokemon) => {
+  console.log()
+}
 
 
   return (

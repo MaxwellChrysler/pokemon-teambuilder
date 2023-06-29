@@ -49,7 +49,7 @@ console.log(selectedPokemon)
     dispatch({ type: "FETCH_POKEMON" });
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => { // this should be in team builder by the end
     event.preventDefault();
     history.push("/Details");
 // access a reducer on component refactor in teambuilder that updates reducer as it calls the pokemon/cards
