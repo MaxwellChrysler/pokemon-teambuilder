@@ -35,8 +35,10 @@ const goToEditor = (event) =>{
   };
 
   return (
+    <div>
+    <button onClick = {goToEditor} className="editbutton">Go to team editor</button>
     <div className="displayTeam">
-      <button onClick = {goToEditor} className="editbutton">Go to team editor</button>
+     
       {pokemon.map((selectedPokemon, i) => (
         <Card >
           <PokemonItem key={i} selectedPokemon={selectedPokemon} />
@@ -61,6 +63,7 @@ const goToEditor = (event) =>{
           </CardActions>
         </Card>
       ))}
+    </div>
     </div>
   );
 }

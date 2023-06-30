@@ -37,7 +37,7 @@ function Nav() {
             Search
             </Link>
 
-            <Link className="navLink" to="teambuilder">
+            <Link className="navLink" to="/teambuilder">
             Team View
             </Link>
 

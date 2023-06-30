@@ -17,7 +17,8 @@ function LoginPage() {
             history.push('/registration');
           }}
         >
-          Register
+          Aren't signed up for the pokemon leauge?
+          Sign up here
         </button>
       </center>
     </div>
