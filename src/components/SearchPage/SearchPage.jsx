@@ -175,9 +175,9 @@ const addToTeam = (event) => {
 
             {/* <img id="rendered-image" src={pokemon.shiny_img}/>  */}
             <img id="rendered-image" src={pokemon.img} />
-            <img id="rendered-image" src={pokemon.shiny_img} />
+            {/* <img id="rendered-image" src={pokemon.shiny_img} /> */}
             <img id="rendered-image" src={pokemon.officalArt} />
-            <img id="rendered-image" src={pokemon.officalArtShiny} />
+            {/* <img id="rendered-image" src={pokemon.officalArtShiny} /> */}
 
 
             <div>

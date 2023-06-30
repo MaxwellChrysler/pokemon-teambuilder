@@ -31,11 +31,11 @@ router.get('/', (req,res) =>{
 })
 
 
-router.delete("/", (req, res) => {
+router.delete(`/:id`, (req, res) => {
 	// endpoint functionality
-  console.log('IN DELETE ROUTE');
-  const queryText = `DELETE FROM "poke_stats" WHERE id=$1`;
-  pool.query(queryText, [req.body.id]) // or req.params.id
+  console.log('IN DELETE ROUTE', req.params.id);
+  const queryText = `DELETE FROM "poke_stats" WHERE id=$1;`;
+  pool.query(queryText, [req.params.id]) // or req.params.id
   .then(() => {
     res.sendStatus(200)
   })

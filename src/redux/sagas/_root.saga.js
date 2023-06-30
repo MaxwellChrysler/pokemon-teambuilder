@@ -21,7 +21,7 @@ export default function* rootSaga() {
     userSaga(),
     addTeam(), 
     getPokemon(),// getting them from the api
-    getOnePokemon(),
+    // getOnePokemon(), no longer needed 
     deleteMember(),
 
   ]);

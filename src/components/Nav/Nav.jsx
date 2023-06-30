@@ -45,9 +45,6 @@ function Nav() {
            Editor
             </Link>
 
-            <Link className="navLink" to="details">
-          Details
-            </Link>
 
            
 

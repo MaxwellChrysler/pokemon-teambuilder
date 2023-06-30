@@ -26,7 +26,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/pokemon', pokemonRouter);
 app.use('/getPokemon', pokemonRouter);
-app.use('/deletePokemon', pokemonRouter);
+app.use('/api/deletePokemon', pokemonRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -63,8 +63,8 @@ function PokemonItem({selectedPokemon}) {
     <div>
     <ThemeProvider theme={theme}>
       <Container fixed>
-        <Grid spacing={2} >
-          <Grid item xs={12} > 
+        <Grid >
+          <Grid > 
             <Card sx={{ width: 240 }} >
               <CardMedia sx={{ height: 140 }} image={selectedPokemon.officalArt} title={selectedPokemon.name} />
               <CardContent>
