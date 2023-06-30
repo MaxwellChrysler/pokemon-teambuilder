@@ -53,7 +53,9 @@ function SearchPage() {
     level: "50", // this should be forced to only take a level and will be set by the user as the API will not display a level
   }); // this is all done to provide empty strings rather than homeless data,
   // This is where we call for all of the data of the pokemon
-  const data = {
+
+  // This is for the radar chart
+  const data = { 
     labels: ["Hp", "Attack", "Defense", "Speed", "Sp. Defense", "Sp. Attack"],
     datasets: [
       {
@@ -71,7 +73,7 @@ function SearchPage() {
       },
     ],
   };
-
+// for the radar chart
   const options = {
     scales: {
       r: {
@@ -82,6 +84,7 @@ function SearchPage() {
     },
   };
 
+  // currently unused. Will be for when the API isn't in the client side 
   const searchpoke = (event) => { // rename after refactor 
     event.preventDefault();
     console.log('search is:', pokemonName);

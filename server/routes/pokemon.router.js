@@ -45,6 +45,15 @@ router.delete(`/:id`, (req, res) => {
   })
 });
 
+router.put('/:id', (req, res )=> {
+  const updatedName = req.body.nickname;
+  console.log('in put to update nickname',req.params.id ) // this is so we see the id of the pokemon we want to update
+  
+
+  const queryText = 'UPDATE "poke_stats" SET column1 = $1, column2 = $2, ... WHERE id = $3;';
+  const queryValues = [updatedData.column1, updatedData.column2, /* ... */, req.params.id];
+})
+
 
 
 /**
@@ -62,7 +71,7 @@ router.post("/", (req, res) => {
     const spAttack = req.body.spAttack;
     const spDefense = req.body.spDefense;
     const speed = req.body.speed;
-    const nickname = null;
+    const nickname = req.body.name; // this is a test. I want to default the nickname to be the name, this may be an issue later
     const img = req.body.img;
     const officalArt = req.body.officalArt;
     // const userID = req.body

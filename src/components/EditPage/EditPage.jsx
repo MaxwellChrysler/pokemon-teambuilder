@@ -12,7 +12,6 @@ import { red } from "@mui/material/colors";
 import { orange } from "@mui/material/colors";
 import Typography from "@mui/material/Typography";
 
-
 // This is one of our simplest components
 // It doesn't have local state
 // It doesn't dispatch any redux actions or display any part of redux state
@@ -46,13 +45,13 @@ function EditPage() {
     },
   });
 
-  const selectedPokemon = pokemon.find((item) => item.id === Number(params.id)); 
+  const selectedPokemon = pokemon.find((item) => item.id === Number(params.id));
 
   const deletePokemon = (id) => {
-    console.log("testing params.id ", id); //pokemon.id is undefined
+    console.log("testing params.id ", id); 
     dispatch({
       type: "DELETE_POKEMON",
-      payload: id, // This is not being defind... how do I fix that
+      payload: id, 
     });
   };
 
@@ -63,13 +62,15 @@ function EditPage() {
           <PokemonItem key={i} selectedPokemon={selectedPokemon} />
           <CardActions>
             <Button
-            variant="contained"
+              variant="contained"
               onClick={() => deletePokemon(selectedPokemon.id)}
               size="small"
             >
               remove from team
             </Button>
-            <Button variant="contained" size="small">give nick name</Button>
+            <Button variant="contained" size="small">
+              give nick name
+            </Button>
             {/* <Button color = 'text.secondary'>Test</Button>
                   <Typography variant="body2" color="text.secondary">
                   {selectedPokemon.name}'s pokedex entry is {selectedPokemon.pokeID}.
@@ -78,6 +79,9 @@ function EditPage() {
           </CardActions>
         </Card>
       ))}
+
+
+      
     </div>
   );
 }

@@ -66,7 +66,7 @@ function PokemonItem({selectedPokemon}) {
         <Grid >
           <Grid > 
             <Card sx={{ width: 240 }} >
-              <CardMedia sx={{ height: 140 }} image={selectedPokemon.officalArt} title={selectedPokemon.name} />
+              <CardMedia sx={{ height: 220 }} image={selectedPokemon.officalArt} title={selectedPokemon.name} />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {selectedPokemon.name}
