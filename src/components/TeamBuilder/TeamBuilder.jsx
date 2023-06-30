@@ -24,6 +24,11 @@ function TeamBuilder() {
     dispatch({ type: "FETCH_POKEMON" });
   }, []);
 
+const goToEditor = (event) =>{
+  event.preventDefault();
+  history.push('/editor')
+}
+
   const getDetails = (id) => {
     console.log("details was clicked with an id", id);
     history.push(`/details/${id}`);
@@ -31,6 +36,7 @@ function TeamBuilder() {
 
   return (
     <div className="displayTeam">
+      <button onClick = {goToEditor} className="editbutton">Go to team editor</button>
       {pokemon.map((selectedPokemon, i) => (
         <Card >
           <PokemonItem key={i} selectedPokemon={selectedPokemon} />
@@ -46,6 +52,12 @@ function TeamBuilder() {
             >
               Details{" "}
             </Button>
+            {/* <CardContent>
+            <Typography variant="body2" color="text.secondary">
+                  {selectedPokemon.name}'s pokedex entry is {selectedPokemon.pokeID}.
+                 
+                </Typography>
+                </CardContent> */}
           </CardActions>
         </Card>
       ))}

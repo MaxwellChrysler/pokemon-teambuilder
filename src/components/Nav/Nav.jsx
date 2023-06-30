@@ -41,10 +41,13 @@ function Nav() {
             Team View
             </Link>
 
-            <Link className="navLink" to="/editor">
+            {/* <Link className="navLink" to="/editor"> no longer needed because this is accessed via the teambuilder page
            Editor
-            </Link>
+            </Link> */}
 
+            {/* <Link className="navLink" to="details"> no longer needed becasue each pokemon have unique pages
+          Details
+            </Link> */}
 
            
 
