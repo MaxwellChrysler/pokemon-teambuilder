@@ -1,21 +1,21 @@
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useState, useEffect } from 'react';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { orange } from '@mui/material/colors';
-import ('./PokemonItem.css'); 
+import { useState, useEffect } from "react";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { orange } from "@mui/material/colors";
+import("./PokemonItem.css");
 
 const theme = createTheme({
   status: {
@@ -26,7 +26,7 @@ const theme = createTheme({
       main: orange[500],
     },
     secondary: {
-      main: '#edf2ff',
+      main: "#edf2ff",
     },
     text: {
       secondary: orange[500],
@@ -34,62 +34,64 @@ const theme = createTheme({
   },
   typography: {
     body2: {
-      fontSize: '1.1em',
+      fontSize: "1.1em",
     },
   },
 });
 
-function PokemonItem({selectedPokemon}) {
+function PokemonItem({ selectedPokemon }) {
   const pokemon = useSelector((store) => store.pokemon);
   const dispatch = useDispatch();
   const history = useHistory();
-// console.log(selectedPokemon)
+  // console.log(selectedPokemon)
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
 
   useEffect(() => {
     dispatch({ type: "FETCH_POKEMON" });
   }, []);
-
-  
 
   if (!pokemon || pokemon.length === 0) {
     return <div>Please add members to your team!...</div>;
   }
 
   // const  = pokemon[0]; // Accessing the first Pokemon This needs to be changed to be whatever pokemon is clicked on from
- 
 
-  // use params 
-  return ( (selectedPokemon ?
+  // use params
+  return selectedPokemon ? (
     <div>
-    <ThemeProvider theme={theme}>
-      <Container fixed>
-        <Grid >
-          <Grid > 
-            <Card sx={{ width: 240 }} >
-              <CardMedia sx={{ height: 200 }} image={selectedPokemon.officalArt} title={selectedPokemon.name} style={{backgroundColor: "teal"}} />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {selectedPokemon.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {selectedPokemon.name}'s pokedex entry is {selectedPokemon.pokeID}.
-                  {selectedPokemon.nickname}
-                 
-                </Typography>
-                
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
-    </ThemeProvider>
-    </div> : <div>
-      loading
+      <ThemeProvider theme={theme}>
+        <Container fixed>
+            {/* <Grid container spacing={1}>  */}
+            {/* <Grid display='flex' sx={{width: '100%'}} item sm={1} lg={1}> */}
+              <Card sx={{ width: 240 }}>
+                <CardMedia
+                  sx={{ height: 220 }}
+                  image={selectedPokemon.officalArt}
+                  title={selectedPokemon.name}
+                  style={{ backgroundColor: "teal" }}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {capitalizeFirstLetter(selectedPokemon.name)}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {capitalizeFirstLetter(selectedPokemon.name)}'s pokedex
+                    entry is {selectedPokemon.pokeID}.{" "}
+                    {selectedPokemon.nickname}
+                  </Typography>
+                </CardContent>
+              </Card>
+            {/* </Grid> */}
+          {/* </Grid> */}
+        </Container>
+      </ThemeProvider>
     </div>
-  )
+  ) : (
+    <div>loading</div>
   );
 }
 
 export default PokemonItem;
-// container spacing={2}
-// item sm={6} lg={3}

@@ -3,7 +3,7 @@ import "./SearchPage.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
+import Input from "@mui/material/Input";
 
 
 // Imports for Chart js
@@ -27,6 +27,8 @@ ChartJS.register(
   Legend,
   Filler
 );
+
+
 
 function SearchPage() {
 
@@ -139,6 +141,8 @@ const addToTeam = (event) => {
     type: 'POST_POKEMON', // This is for putting pokemon to team
     payload: pokemon // This is in reference to the const
 })
+alert('pokemon has been added to team')
+console.log([pokemon].length)
 
 }
 
@@ -182,13 +186,11 @@ const addToTeam = (event) => {
             <img id="rendered-image" src={pokemon.officalArt} />
             {/* <img id="rendered-image" src={pokemon.officalArtShiny} /> */}
 
-
             <div>
-            <button className="addtoteam" onClick = {addToTeam}>
-            Add to team
-            </button>
-
-            {/* <img src ="../../../public/images//Users/maxwellchrysler/Prime work/tier2/Poké_Ball_icon.svg.png"></img> */}
+            <img id="rendered-image" src={`https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Poké_Ball_icon.svg/2052px-Poké_Ball_icon.svg.png`} 
+             className="addtoteam" onClick = {addToTeam}
+            
+            />
           </div>
             <div className="graph" style={{ width: "425px", padding: "20px" }}>
               <Radar data={data} options={options}></Radar>
@@ -213,5 +215,7 @@ const addToTeam = (event) => {
     </div>
   );
 }
+
+
 // {pokemon.type2} the second typing
 export default SearchPage;

@@ -6,6 +6,7 @@ import("./EditPage.css");
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
+import Input from "@mui/material/Input";
 import { useParams } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
@@ -25,9 +26,9 @@ function EditPage() {
   const pokemon = useSelector((store) => store.pokemon);
   const [nickname, setNickname] = useState("");
 
-
-
-  const theme = createTheme({ // material ui stuff
+ 
+  const theme = createTheme({
+    // material ui stuff
     status: {
       danger: orange[500],
     },
@@ -51,72 +52,66 @@ function EditPage() {
 
   const selectedPokemon = pokemon.find((item) => item.id === Number(params.id)); // used to bring in id for delete to use
 
-  const deletePokemon = (id) => { 
-    console.log("testing params.id ", id); 
+  const deletePokemon = (id) => {
+    console.log("testing params.id ", id);
     dispatch({
       type: "DELETE_POKEMON",
-      payload: id, 
+      payload: id,
     });
   };
 
-  const goToBuilder = (event) =>{
+  const goToBuilder = (event) => {
     event.preventDefault();
-    history.push('/teambuilder')
-  }
+    history.push("/teambuilder");
+  };
 
   // ham will return the currently set nickname which is going to be the default name of the pokemon
   // nick name is what I want them to be named
 
-  const editNickname = (id) =>{
-    console.log('testing nick name' , id);
+  const editNickname = (id) => {
+    console.log("testing nick name", id);
     dispatch({
       type: "PUT_POKEMON",
-      payload: {nickname , id}
-    })
-  }
-
-  
+      payload: { nickname, id },
+    });
+  };
 
   return (
     <div>
-      <button className ="builderbutton"onClick = {goToBuilder}> 
-Return to view
+      <button className="builderbutton" onClick={goToBuilder}>
+        Return to view
       </button>
-    <div className="container">
-      {pokemon.map((selectedPokemon, i) => (
-        <Card style={{backgroundColor: "red"}} >
-          <PokemonItem key={i} selectedPokemon={selectedPokemon} />
-          <CardActions>
-            <Button
-              variant="contained"
-              onClick={() => deletePokemon(selectedPokemon.id)}
-              size="small"
-            >
-              remove from team
-            </Button>
-            <Button variant="contained" size="small" onClick={() => editNickname( selectedPokemon.id)}>
-              give nick name
-            </Button>
-            <form>
-              <input
-              type="text"
-          onChange={(event) => {
-            setNickname(event.target.value);  // usestate setnick name to what is typed in the input field
-            
-          }}
-          />
-            </form>
-            {/* <Button color = 'text.secondary'>Test</Button>
-                  <Typography variant="body2" color="text.secondary">
-                  {selectedPokemon.name}'s pokedex entry is {selectedPokemon.pokeID}.
-                 
-                </Typography> */}
-          </CardActions>
-        </Card>
-      ))}
-
-</div>
-      
+      <div className="container">
+        {pokemon.map((selectedPokemon, i) => (
+          <Card style={{ backgroundColor: "red" }}>
+            <PokemonItem key={i} selectedPokemon={selectedPokemon} />
+            <CardActions>
+              <Button
+                variant="contained"
+                onClick={() => deletePokemon(selectedPokemon.id)}
+                size="small"
+              >
+                remove from team
+              </Button>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={() => editNickname(selectedPokemon.id)}
+              >
+                give nick name
+              </Button>
+              <form>
+                <input
+                  type="text"
+                  onChange={(event) => {
+                    setNickname(event.target.value); // usestate setnick name to what is typed in the input field
+                  }}
+                />
+              </form>
+            </CardActions>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }

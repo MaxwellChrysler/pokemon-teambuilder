@@ -8,3 +8,8 @@
   
   }
   
+  .name{
+    display:flex;
+
+    text-align: center;
+  }

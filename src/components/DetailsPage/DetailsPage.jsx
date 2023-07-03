@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import PokemonItem from "../PokemonItem/PokemonItem";
-import ("./DetailsPage.css");
-import RadarChart from '../RadarChart/RadarChart'
+import("./DetailsPage.css");
+import RadarChart from "../RadarChart/RadarChart";
 import { useParams } from "react-router-dom";
 
-// import for chart js 
+// import for chart js
 import {
   Chart as ChartJS,
   LineElement,
@@ -30,11 +30,9 @@ ChartJS.register(
 function Details() {
   const pokemon = useSelector((store) => store.pokemon);
   const params = useParams();
-  const selectedPokemon = pokemon.find(item=> item.id === Number(params.id)); // Selecting the first Pokemon 
+  const selectedPokemon = pokemon.find((item) => item.id === Number(params.id)); // Selecting the first Pokemon
 
-  
-
-  const data = { 
+  const data = {
     labels: ["Hp", "Attack", "Defense", "Speed", "Sp. Defense", "Sp. Attack"],
     datasets: [
       {
@@ -52,7 +50,28 @@ function Details() {
       },
     ],
   };
-// for the radar chart
+  const determineGeneration = (pokeID) => {
+    if (pokeID <= 151) {
+      return 1;
+    } else if (pokeID <= 251) {
+      return 2;
+    } else if (pokeID <= 386) {
+      return 3;
+    } else if (pokeID <= 493) {
+      return 4;
+    } else if (pokeID <= 649) {
+      return 5;
+    } else if (pokeID <= 721) {
+      return 6;
+    } else if (pokeID <= 809) {
+      return 7;
+    } else if (pokeID <= 898) {
+      return 8;
+    } else {
+      return 9;
+    }
+  };
+  // for the radar chart
   const options = {
     scales: {
       r: {
@@ -62,45 +81,32 @@ function Details() {
       },
     },
   };
-  
+
   if (!pokemon || pokemon.length === 0) {
     return <div>You should add pokemon to your team</div>; // if theres nothing in the array it will display this instead of nothing
   }
 
-  
+  // console.log(selectedPokemon, selectedPokemon.nickname);
+  // console.log(selectedPokemon.hp);
 
-console.log(selectedPokemon, selectedPokemon.nickname)
-console.log(selectedPokemon.hp)
+  // console.log(params);
 
-console.log(params)
-  
-  
   return (
     <div>
+       <h2 className="name">{selectedPokemon.nickname}</h2>
+      <div className="displayTeam">
       
-    <div className="displayTeam">
-      <PokemonItem
-      
-       selectedPokemon={selectedPokemon} 
-        
-      
-       
-       
-       />
-       </div>
-            <div className="graph" style={{ width: "425px", padding: "20px" }}>
-              <Radar data={data} options={options}></Radar>
+        <PokemonItem selectedPokemon={selectedPokemon} />
 
-            </div> 
+        <img id="rendered-image" src={selectedPokemon.img} />
 
-
+      {  determineGeneration(selectedPokemon.pokeID)}
+      </div>
+      <div className="graph" style={{ width: "425px", padding: "20px" }}>
+        <Radar data={data} options={options}></Radar>
+      </div>
     </div>
-   
   );
 }
 
 export default Details;
-
-
-
-

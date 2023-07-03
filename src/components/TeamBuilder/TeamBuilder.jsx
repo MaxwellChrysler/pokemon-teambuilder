@@ -17,6 +17,7 @@ import("./TeamBuilder.css");
 function TeamBuilder() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const user = useSelector((store) => store.user);
   const pokemon = useSelector((store) => store.pokemon);
 
   useEffect(() => {
@@ -24,10 +25,10 @@ function TeamBuilder() {
     dispatch({ type: "FETCH_POKEMON" });
   }, []);
 
-const goToEditor = (event) =>{
-  event.preventDefault();
-  history.push('/editor')
-}
+  const goToEditor = (event) => {
+    event.preventDefault();
+    history.push("/editor");
+  };
 
   const getDetails = (id) => {
     console.log("details was clicked with an id", id);
@@ -35,36 +36,43 @@ const goToEditor = (event) =>{
   };
 
   return (
-    <div>
-    <button onClick = {goToEditor} className="editbutton">Go to team editor</button>
-    <div className="displayTeam">
-     
-      {pokemon.map((selectedPokemon, i) => (
-        <Card >
-          <PokemonItem key={i} selectedPokemon={selectedPokemon} />
-          <CardActions>
-            <Button variant="contained" size="small">
-              misc
-            </Button>
-            {/* variant="contained"  prevents the color from becoming blue, I dont know where the blue color is coming from */}
-            <Button
-              onClick={() => getDetails(selectedPokemon.id)}
-              className="details"
-              size="small"
-            >
-              Details{" "}
-            </Button>
-            {/* <CardContent>
+    <>
+      {user.id ? (
+        <div>
+          <button onClick={goToEditor} className="editbutton">
+            Go to team editor
+          </button>
+          <div className="displayTeam">
+            {pokemon.map((selectedPokemon, i) => (
+              <Card>
+                <PokemonItem key={i} selectedPokemon={selectedPokemon} />
+                <CardActions>
+                  <Button variant="contained" size="small">
+                    misc
+                  </Button>
+                  {/* variant="contained"  prevents the color from becoming blue, I dont know where the blue color is coming from */}
+                  <Button
+                    onClick={() => getDetails(selectedPokemon.id)}
+                    className="details"
+                    size="small"
+                  >
+                    Details{" "}
+                  </Button>
+                  {/* <CardContent>
             <Typography variant="body2" color="text.secondary">
                   {selectedPokemon.name}'s pokedex entry is {selectedPokemon.pokeID}.
                  
                 </Typography>
                 </CardContent> */}
-          </CardActions>
-        </Card>
-      ))}
-    </div>
-    </div>
+                </CardActions>
+              </Card>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <h1>Try logging in</h1>
+      )}
+    </>
   );
 }
 
