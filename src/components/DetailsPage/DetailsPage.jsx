@@ -71,6 +71,30 @@ function Details() {
       return 9;
     }
   };
+
+  function getRegionFromGeneration(generation) {
+    switch (generation) {
+      case 1:
+        return "Kanto";
+      case 2:
+        return "Johto";
+      case 3:
+        return "Hoenn";
+      case 4:
+        return "Sinnoh";
+      case 5:
+        return "Unova";
+      case 6:
+        return "Kalos";
+      case 7:
+        return "Alola";
+      case 8:
+        return "Galar";
+      default:
+        return "Paldia";
+    }
+  }
+  
   // for the radar chart
   const options = {
     scales: {
@@ -105,6 +129,10 @@ function Details() {
       <div className="graph" style={{ width: "425px", padding: "20px" }}>
         <Radar data={data} options={options}></Radar>
       </div>
+      <h3>{selectedPokemon.nickname} is from the  {determineGeneration(selectedPokemon.pokeID)} generation 
+      and from **** region. and it weighs .... 
+      <p>Region: {getRegionFromGeneration(determineGeneration(selectedPokemon.pokeID))}</p>
+       </h3>
     </div>
   );
 }
