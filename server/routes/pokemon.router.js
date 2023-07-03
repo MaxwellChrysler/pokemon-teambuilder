@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
     const spAttack = req.body.spAttack;
     const spDefense = req.body.spDefense;
     const speed = req.body.speed;
-    const nickname = null; // this is a test. I want to default the nickname to be the name, this may be an issue later
+    const nickname =req.body.name ; // this is a test. I want to default the nickname to be the name, this may be an issue later
     const img = req.body.img;
     const officalArt = req.body.officalArt;
     // const userID = req.body
@@ -99,22 +99,22 @@ router.delete(`/:id`, (req, res) => {
   })
 });
 
-router.put('/:id', (req, res )=> {
-  const updatedName = [req.params.id,req.body.nickname]
-  console.log('test name', updatedName)
-  console.log('in put to update nickname',req.params.id ) // this is so we see the id of the pokemon we want to update
+// router.put('/:id', (req, res )=> {
+//   const updatedName = [req.params.id,req.body.nickname]
+//   console.log('test name', updatedName)
+//   console.log('in put to update nickname',req.params.id ) // this is so we see the id of the pokemon we want to update
   
 
-  const queryText = `UPDATE "poke_stats" SET  nickname=$2  WHERE id=$1;`;
-  pool.query(queryText,updatedName)
-  .then(() => {
-    res.sendStatus(200)
-  })
-  .catch((err) => {
-    console.log('error updating', err);
-    res.sendStatus(500)
-  })
-});
+//   const queryText = `UPDATE "poke_stats" SET  nickname=$2  WHERE id=$1;`;
+//   pool.query(queryText,updatedName)
+//   .then(() => {
+//     res.sendStatus(200)
+//   })
+//   .catch((err) => {
+//     console.log('error updating', err);
+//     res.sendStatus(500)
+//   })
+// });
 
 
 

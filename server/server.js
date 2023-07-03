@@ -28,7 +28,7 @@ app.use('/api/user', userRouter);
 app.use('/api/pokemon', pokemonRouter);
 app.use('/getPokemon', pokemonRouter);
 app.use('/api/deletePokemon', pokemonRouter);
-app.use('/api/put/:id', putRouter);
+app.use('/api/put/', putRouter);
 
 
 // Serve static files

@@ -67,11 +67,11 @@ function EditPage() {
   // ham will return the currently set nickname which is going to be the default name of the pokemon
   // nick name is what I want them to be named
 
-  const editNickname = (ham,id) =>{
-    console.log('testing nick name' , ham, id,nickname);
+  const editNickname = (id) =>{
+    console.log('testing nick name' , id);
     dispatch({
       type: "PUT_POKEMON",
-      payload: {nickname,id}
+      payload: {nickname , id}
     })
   }
 
@@ -94,7 +94,7 @@ Return to view
             >
               remove from team
             </Button>
-            <Button variant="contained" size="small" onClick={() => editNickname(selectedPokemon.nickname , selectedPokemon.id)}>
+            <Button variant="contained" size="small" onClick={() => editNickname( selectedPokemon.id)}>
               give nick name
             </Button>
             <form>
