@@ -64,11 +64,14 @@ function EditPage() {
     history.push('/teambuilder')
   }
 
-  const editNickname = (name,id) =>{
-    console.log('testing nick name' , nickname,id);
+  // ham will return the currently set nickname which is going to be the default name of the pokemon
+  // nick name is what I want them to be named
+
+  const editNickname = (ham,id) =>{
+    console.log('testing nick name' , ham, id,nickname);
     dispatch({
       type: "PUT_POKEMON",
-      payload: nickname,id,
+      payload: {nickname,id}
     })
   }
 
@@ -91,14 +94,14 @@ Return to view
             >
               remove from team
             </Button>
-            <Button variant="contained" size="small" onClick={() => editNickname(selectedPokemon.nickname,selectedPokemon.id)}>
+            <Button variant="contained" size="small" onClick={() => editNickname(selectedPokemon.nickname , selectedPokemon.id)}>
               give nick name
             </Button>
             <form>
               <input
               type="text"
           onChange={(event) => {
-            setNickname(event.target.value); 
+            setNickname(event.target.value);  // usestate setnick name to what is typed in the input field
             
           }}
           />

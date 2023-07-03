@@ -5,17 +5,15 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* putNickname(action){
     try{ 
         console.log(action.payload," testing put payload")
-        yield axios.put(`/api/pokemon/'${action.payload}`);
+        yield axios.put(`/api/put/${action.payload.id}`, action.payload.nickname);
 
         yield put({ // Not sure if I need this 
-            type: 'FETCH_POKEMON'
+            type: 'FETCH_POKEMON' // This could be breaking things because it could be reposting what originally there
         });
     } catch (error){
-        console.log(err,'error in put Pokemon Saga');
-        if(error.response.status ===500){
+        console.log(error,'error in put Pokemon Saga');
 
-            yield put ({type:'POST_ERR'});
-        }
+        
     }
 }
  
