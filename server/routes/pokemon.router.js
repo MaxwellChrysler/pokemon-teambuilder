@@ -101,7 +101,7 @@ router.delete(`/:id`, (req, res) => {
 
 router.put('/:id', (req, res )=> {
   const updatedName = req.body.nickname;
-  console.log('in put to update nickname',req.params.id ) // this is so we see the id of the pokemon we want to update
+  console.log('in put to update nickname',req.params.id,  ) // this is so we see the id of the pokemon we want to update
   
 
   const queryText = `UPDATE "poke_stats" SET WHERE id=$1, nickname=$2;`;

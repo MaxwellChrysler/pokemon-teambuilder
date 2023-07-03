@@ -5,7 +5,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* putNickname(action){
     try{ 
         console.log(action.payload," testing put payload")
-        yield axios.put('/api/pokemon/', action.payload);
+        yield axios.put(`/api/pokemon/'${action.payload}`);
 
         yield put({ // Not sure if I need this 
             type: 'FETCH_POKEMON'
