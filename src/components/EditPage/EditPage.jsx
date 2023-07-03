@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
 import { orange } from "@mui/material/colors";
 import Typography from "@mui/material/Typography";
+import { useState } from "react";
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -22,8 +23,11 @@ function EditPage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const pokemon = useSelector((store) => store.pokemon);
+  const [nickname, setNickname] = useState("");
 
-  const theme = createTheme({
+
+
+  const theme = createTheme({ // material ui stuff
     status: {
       danger: orange[500],
     },
@@ -45,9 +49,9 @@ function EditPage() {
     },
   });
 
-  const selectedPokemon = pokemon.find((item) => item.id === Number(params.id));
+  const selectedPokemon = pokemon.find((item) => item.id === Number(params.id)); // used to bring in id for delete to use
 
-  const deletePokemon = (id) => {
+  const deletePokemon = (id) => { 
     console.log("testing params.id ", id); 
     dispatch({
       type: "DELETE_POKEMON",
@@ -55,10 +59,29 @@ function EditPage() {
     });
   };
 
+  const goToBuilder = (event) =>{
+    event.preventDefault();
+    history.push('/teambuilder')
+  }
+
+  const editNickname = (name,id) =>{
+    console.log('testing nick name' , nickname,id);
+    dispatch({
+      type: "PUT_POKEMON",
+      payload: nickname,id,
+    })
+  }
+
+  
+
   return (
+    <div>
+      <button className ="builderbutton"onClick = {goToBuilder}> 
+Return to view
+      </button>
     <div className="container">
       {pokemon.map((selectedPokemon, i) => (
-        <Card>
+        <Card style={{backgroundColor: "red"}} >
           <PokemonItem key={i} selectedPokemon={selectedPokemon} />
           <CardActions>
             <Button
@@ -68,9 +91,18 @@ function EditPage() {
             >
               remove from team
             </Button>
-            <Button variant="contained" size="small">
+            <Button variant="contained" size="small" onClick={() => editNickname(selectedPokemon.nickname,selectedPokemon.id)}>
               give nick name
             </Button>
+            <form>
+              <input
+              type="text"
+          onChange={(event) => {
+            setNickname(event.target.value); 
+            
+          }}
+          />
+            </form>
             {/* <Button color = 'text.secondary'>Test</Button>
                   <Typography variant="body2" color="text.secondary">
                   {selectedPokemon.name}'s pokedex entry is {selectedPokemon.pokeID}.
@@ -80,7 +112,7 @@ function EditPage() {
         </Card>
       ))}
 
-
+</div>
       
     </div>
   );

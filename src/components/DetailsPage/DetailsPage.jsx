@@ -69,23 +69,28 @@ function Details() {
 
   
 
-console.log(selectedPokemon)
+console.log(selectedPokemon, selectedPokemon.nickname)
 console.log(selectedPokemon.hp)
+
 console.log(params)
   
   
   return (
     <div>
+      
     <div className="displayTeam">
       <PokemonItem
       
        selectedPokemon={selectedPokemon} 
+        
+      
        
        
        />
        </div>
             <div className="graph" style={{ width: "425px", padding: "20px" }}>
               <Radar data={data} options={options}></Radar>
+
             </div> 
 
 

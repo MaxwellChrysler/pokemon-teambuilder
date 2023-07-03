@@ -66,13 +66,14 @@ function PokemonItem({selectedPokemon}) {
         <Grid >
           <Grid > 
             <Card sx={{ width: 240 }} >
-              <CardMedia sx={{ height: 200 }} image={selectedPokemon.officalArt} title={selectedPokemon.name} />
+              <CardMedia sx={{ height: 200 }} image={selectedPokemon.officalArt} title={selectedPokemon.name} style={{backgroundColor: "teal"}} />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {selectedPokemon.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {selectedPokemon.name}'s pokedex entry is {selectedPokemon.pokeID}.
+                  {selectedPokemon.nickname}
                  
                 </Typography>
                 

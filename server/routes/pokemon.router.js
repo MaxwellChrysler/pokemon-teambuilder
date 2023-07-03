@@ -17,44 +17,6 @@ const axios = require("axios");
 //     });
 // });
 
-router.get('/', (req,res) =>{
-  const queryText = `SELECT * FROM "poke_stats"`;
-  
-  pool.query(queryText)
-  .then(result => {
-    res.send(result.rows)
-  })
-  .catch(err => {
-    console.log('error geting poke', err);
-    res.sendStatus(200); // For testing only, can be removed
-  })
-})
-
-
-router.delete(`/:id`, (req, res) => {
-	// endpoint functionality
-  console.log('IN DELETE ROUTE', req.params.id);
-  const queryText = `DELETE FROM "poke_stats" WHERE id=$1;`;
-  pool.query(queryText, [req.params.id]) // or req.params.id
-  .then(() => {
-    res.sendStatus(200)
-  })
-  .catch((err) => {
-    console.log('error deleting', err);
-    res.sendStatus(500)
-  })
-});
-
-router.put('/:id', (req, res )=> {
-  const updatedName = req.body.nickname;
-  console.log('in put to update nickname',req.params.id ) // this is so we see the id of the pokemon we want to update
-  
-
-  const queryText = 'UPDATE "poke_stats" SET column1 = $1, column2 = $2, ... WHERE id = $3;';
-  const queryValues = [updatedData.column1, updatedData.column2, /* ... */, req.params.id];
-})
-
-
 
 /**
  * POST route template
@@ -106,5 +68,53 @@ router.post("/", (req, res) => {
     res.sendStatus(403);
   }
 });
+
+
+
+router.get('/', (req,res) =>{
+  const queryText = `SELECT * FROM "poke_stats"`;
+  
+  pool.query(queryText)
+  .then(result => {
+    res.send(result.rows)
+  })
+  .catch(err => {
+    console.log('error geting poke', err);
+    res.sendStatus(200); // For testing only, can be removed
+  })
+})
+
+
+router.delete(`/:id`, (req, res) => {
+	// endpoint functionality
+  console.log('IN DELETE ROUTE', req.params.id);
+  const queryText = `DELETE FROM "poke_stats" WHERE id=$1;`;
+  pool.query(queryText, [req.params.id]) // or req.params.id
+  .then(() => {
+    res.sendStatus(200)
+  })
+  .catch((err) => {
+    console.log('error deleting', err);
+    res.sendStatus(500)
+  })
+});
+
+router.put('/:id', (req, res )=> {
+  const updatedName = req.body.nickname;
+  console.log('in put to update nickname',req.params.id ) // this is so we see the id of the pokemon we want to update
+  
+
+  const queryText = `UPDATE "poke_stats" SET WHERE id=$1, nickname=$2;`;
+  pool.query(queryText,[req.params.id])
+  .then(() => {
+    res.sendStatus(200)
+  })
+  .catch((err) => {
+    console.log('error updating', err);
+    res.sendStatus(500)
+  })
+});
+
+
 
 module.exports = router;

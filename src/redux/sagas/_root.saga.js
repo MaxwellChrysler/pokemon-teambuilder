@@ -1,4 +1,4 @@
-import { all } from 'redux-saga/effects';
+import { all, put } from 'redux-saga/effects';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
@@ -6,6 +6,8 @@ import addTeam from './post.pokemon.saga';
 import getPokemon from './get.pokemon.saga';
 import getOnePokemon from './get.one.pokemon.saga'
 import deleteMember from './delete.pokemon.saga'
+import putName from './put.pokemon.saga';
+
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,6 +25,7 @@ export default function* rootSaga() {
     getPokemon(),// getting them from the api
     // getOnePokemon(), no longer needed 
     deleteMember(),
+    putName(),
 
   ]);
 }
