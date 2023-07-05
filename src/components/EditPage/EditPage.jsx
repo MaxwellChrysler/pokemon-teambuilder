@@ -25,6 +25,7 @@ function EditPage() {
   const dispatch = useDispatch();
   const pokemon = useSelector((store) => store.pokemon);
   const [nickname, setNickname] = useState("");
+  const [click, setClick] = useState(false);
 
  
   const theme = createTheme({
@@ -91,7 +92,16 @@ function EditPage() {
                 onClick={() => deletePokemon(selectedPokemon.id)}
                 size="small"
               >
+
+
                 remove from team
+
+          
+              </Button>
+              show edit button 
+
+              <Button>
+
               </Button>
               <Button
                 variant="contained"
@@ -100,6 +110,7 @@ function EditPage() {
               >
                 give nick name
               </Button>
+
               <form>
                 <input
                   type="text"

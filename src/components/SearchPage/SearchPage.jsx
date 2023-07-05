@@ -35,7 +35,7 @@ function SearchPage() {
   const dispatch = useDispatch();
   const pokemonReducer = useSelector((store) => store.pokemon)
   const [pokemonName, setPokemonName] = useState("");
-  const [pokeID, setPokeID] = useState({ id: "" });
+
   const [pokemonChosen, setPokemonChosen] = useState(false); // this is to hold that data the this pokemon is the one that is currently being searched for
   const [pokemon, setPokemon] = useState({
     name: "",
@@ -52,7 +52,7 @@ function SearchPage() {
     speed: "",
     type: "",
     type2: "", // This can stay but displaying the second type is a problem
-    level: "50", // this should be forced to only take a level and will be set by the user as the API will not display a level
+    weight:"", // this should be forced to only take a level and will be set by the user as the API will not display a level
   }); // this is all done to provide empty strings rather than homeless data,
   // This is where we call for all of the data of the pokemon
 
@@ -122,6 +122,8 @@ function SearchPage() {
           spDefense: response.data.stats[4].base_stat,
           speed: response.data.stats[5].base_stat,
           type: response.data.types[0].type.name,
+          // type2: response.data.types[1].type.name,
+          weight: response.data.weight
         });
 
         console.log(pokemon);
@@ -206,9 +208,8 @@ console.log([pokemon].length)
             <h3>Special attack: {pokemon.spAttack}</h3>
             <h3>Special defense: {pokemon.spDefense}</h3>
             <h3>Speed: {pokemon.speed}</h3>
-            <h3>
-              Type: {pokemon.type} {pokemon.type2}
-            </h3>
+            <h3>Weight: {pokemon.weight}</h3>
+            <h3>Type: {pokemon.type} {pokemon.type2}</h3>
           </>
         )}
       </div>

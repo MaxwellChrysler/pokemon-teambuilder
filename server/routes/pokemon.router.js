@@ -33,13 +33,16 @@ router.post("/", (req, res) => {
     const spAttack = req.body.spAttack;
     const spDefense = req.body.spDefense;
     const speed = req.body.speed;
-    const nickname =req.body.name ; // this is a test. I want to default the nickname to be the name, this may be an issue later
+    const nickname = req.body.name ; // this is a test. I want to default the nickname to be the name, this may be an issue later
     const img = req.body.img;
     const officalArt = req.body.officalArt;
-    // const userID = req.body
+    const user_id = req.user.id;
+    const type = req.body.type
+    // const type2 = req.body.type2
+    const weight = req.body.weight
 
-    let postQuery = `INSERT INTO poke_stats ("pokeID","name","hp","attack","defense","spAttack","spDefense","speed","nickname","img", "officalArt")
-  VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`;
+    let postQuery = `INSERT INTO poke_stats ("pokeID","name","hp","attack","defense","spAttack","spDefense","speed","nickname","img", "officalArt", "user_id", "type", "weight")
+  VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)`;
     pool
       .query(postQuery, [
         pokeID,
@@ -53,6 +56,9 @@ router.post("/", (req, res) => {
         nickname,
         img,
         officalArt,
+        user_id,
+        type,
+        weight,
       ])
       .then((response) => {
         console.log("Post was sucessful", response);
@@ -72,9 +78,9 @@ router.post("/", (req, res) => {
 
 
 router.get('/', (req,res) =>{
-  const queryText = `SELECT * FROM "poke_stats"`;
+  const queryText = `SELECT * FROM "poke_stats"  WHERE user_id = $1;`;
   
-  pool.query(queryText)
+  pool.query(queryText, [req.user.id])
   .then(result => {
     res.send(result.rows)
   })
@@ -99,22 +105,6 @@ router.delete(`/:id`, (req, res) => {
   })
 });
 
-// router.put('/:id', (req, res )=> {
-//   const updatedName = [req.params.id,req.body.nickname]
-//   console.log('test name', updatedName)
-//   console.log('in put to update nickname',req.params.id ) // this is so we see the id of the pokemon we want to update
-  
-
-//   const queryText = `UPDATE "poke_stats" SET  nickname=$2  WHERE id=$1;`;
-//   pool.query(queryText,updatedName)
-//   .then(() => {
-//     res.sendStatus(200)
-//   })
-//   .catch((err) => {
-//     console.log('error updating', err);
-//     res.sendStatus(500)
-//   })
-// });
 
 
 

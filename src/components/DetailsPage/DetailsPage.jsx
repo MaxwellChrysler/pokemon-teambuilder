@@ -67,12 +67,14 @@ function Details() {
       return 7;
     } else if (pokeID <= 898) {
       return 8;
-    } else {
+    } else if (pokeID <= 1010) {
+      // This the current amount
       return 9;
     }
   };
 
   function getRegionFromGeneration(generation) {
+    // display what region each pokemon is from based off
     switch (generation) {
       case 1:
         return "Kanto";
@@ -94,7 +96,7 @@ function Details() {
         return "Paldia";
     }
   }
-  
+
   // for the radar chart
   const options = {
     scales: {
@@ -117,22 +119,23 @@ function Details() {
 
   return (
     <div>
-       <h2 className="name">{selectedPokemon.nickname}</h2>
+      <h2 className="name">{selectedPokemon.nickname}</h2>
       <div className="displayTeam">
-      
         <PokemonItem selectedPokemon={selectedPokemon} />
 
         <img id="rendered-image" src={selectedPokemon.img} />
 
-      {  determineGeneration(selectedPokemon.pokeID)}
+        {determineGeneration(selectedPokemon.pokeID)}
       </div>
       <div className="graph" style={{ width: "425px", padding: "20px" }}>
         <Radar data={data} options={options}></Radar>
       </div>
-      <h3>{selectedPokemon.nickname} is from the  {determineGeneration(selectedPokemon.pokeID)} generation 
-      and from **** region. and it weighs .... 
-      <p>Region: {getRegionFromGeneration(determineGeneration(selectedPokemon.pokeID))}</p>
-       </h3>
+      <h3>
+        {selectedPokemon.nickname} is from the{" "}
+        {determineGeneration(selectedPokemon.pokeID)} generation and from the{" "}
+        {getRegionFromGeneration(determineGeneration(selectedPokemon.pokeID))}{" "}
+        region. and it weighs {selectedPokemon.weight}
+      </h3>
     </div>
   );
 }
