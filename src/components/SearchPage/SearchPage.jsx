@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Input from "@mui/material/Input";
 
-
 // Imports for Chart js
 import {
   Chart as ChartJS,
@@ -28,12 +27,9 @@ ChartJS.register(
   Filler
 );
 
-
-
 function SearchPage() {
-
   const dispatch = useDispatch();
-  const pokemonReducer = useSelector((store) => store.pokemon)
+  const pokemonReducer = useSelector((store) => store.pokemon);
   const [pokemonName, setPokemonName] = useState("");
 
   const [pokemonChosen, setPokemonChosen] = useState(false); // this is to hold that data the this pokemon is the one that is currently being searched for
@@ -52,12 +48,12 @@ function SearchPage() {
     speed: "",
     type: "",
     type2: "", // This can stay but displaying the second type is a problem
-    weight:"", // this should be forced to only take a level and will be set by the user as the API will not display a level
+    weight: "", // this should be forced to only take a level and will be set by the user as the API will not display a level
   }); // this is all done to provide empty strings rather than homeless data,
   // This is where we call for all of the data of the pokemon
 
   // This is for the radar chart
-  const data = { 
+  const data = {
     labels: ["Hp", "Attack", "Defense", "Speed", "Sp. Defense", "Sp. Attack"],
     datasets: [
       {
@@ -75,7 +71,7 @@ function SearchPage() {
       },
     ],
   };
-// for the radar chart
+  // for the radar chart
   const options = {
     scales: {
       r: {
@@ -86,23 +82,22 @@ function SearchPage() {
     },
   };
 
-  // currently unused. Will be for when the API isn't in the client side 
-  const searchpoke = (event) => { // rename after refactor 
+  // currently unused. Will be for when the API isn't in the client side
+  const searchpoke = (event) => {
+    // rename after refactor
     event.preventDefault();
-    console.log('search is:', pokemonName);
-    dispatch({ type:"FETCH_POKEMON", payload: pokemonName})
-    setPokemonName(''); // clear search bar after search is finished 
-
-  }
+    console.log("search is:", pokemonName);
+    dispatch({ type: "FETCH_POKEMON", payload: pokemonName });
+    setPokemonName(""); // clear search bar after search is finished
+  };
 
   const searchPokemon = () => {
-    // the ${pokemon} name is form usestate to dynaically change what the api is searching for based on the 
+    // the ${pokemon} name is form usestate to dynaically change what the api is searching for based on the
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
       .then((response) => {
         console.log("app axios get is working", response);
 
-        
         setPokemon({
           name: pokemonName,
           id: response.data.id,
@@ -123,7 +118,7 @@ function SearchPage() {
           speed: response.data.stats[5].base_stat,
           type: response.data.types[0].type.name,
           // type2: response.data.types[1].type.name,
-          weight: response.data.weight
+          weight: response.data.weight,
         });
 
         console.log(pokemon);
@@ -135,18 +130,19 @@ function SearchPage() {
       });
   };
 
-const addToTeam = (event) => {
-  event.preventDefault();
-  console.log('search is:', pokemonName);
-  dispatch({
-    
-    type: 'POST_POKEMON', // This is for putting pokemon to team
-    payload: pokemon // This is in reference to the const
-})
-alert('pokemon has been added to team')
-console.log([pokemon].length)
+  const addToTeam = (event) => {
+    swal(pokemon.name, "Has been added to the team", "success", {
+      timer: 1300,
+      button: false,
+    });
 
-}
+    event.preventDefault();
+    console.log("search is:", pokemonName);
+    dispatch({
+      type: "POST_POKEMON", // This is for putting pokemon to team
+      payload: pokemon, // This is in reference to the const
+    });
+  };
 
   return (
     <div className="App">
@@ -164,22 +160,17 @@ console.log([pokemon].length)
       <br />
 
       <button className="searchPokemon" onClick={searchPokemon}>
-      Search for Pokemon
+        Search for Pokemon
       </button>
       {/* if a poke is not chosen prompt user to pick one if they have display their name */}
 
       <div className="displayPokemon">
         {!pokemonChosen ? (
           <h1>Search for Pokemon</h1>
-        ) : 
-        
-        // Top of the screen 
-        
-        
-        (
-          <>
+        ) : (
+          // Top of the screen
 
-          
+          <>
             <h1>{pokemon.name}</h1>
 
             {/* <img id="rendered-image" src={pokemon.shiny_img}/>  */}
@@ -189,15 +180,17 @@ console.log([pokemon].length)
             {/* <img id="rendered-image" src={pokemon.officalArtShiny} /> */}
 
             <div>
-            <img id="rendered-image" src={`https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Poké_Ball_icon.svg/2052px-Poké_Ball_icon.svg.png`} 
-             className="addtoteam" onClick = {addToTeam}
-            
-            />
-          </div>
+              <img
+                id="rendered-image"
+                src={`https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Poké_Ball_icon.svg/2052px-Poké_Ball_icon.svg.png`}
+                className="addtoteam"
+                onClick={addToTeam}
+              />
+            </div>
             <div className="graph" style={{ width: "425px", padding: "20px" }}>
               <Radar data={data} options={options}></Radar>
-            </div> 
-           
+            </div>
+
             <h3>
               Spieces: {pokemon.species} ID: {pokemon.id}
             </h3>
@@ -209,7 +202,9 @@ console.log([pokemon].length)
             <h3>Special defense: {pokemon.spDefense}</h3>
             <h3>Speed: {pokemon.speed}</h3>
             <h3>Weight: {pokemon.weight}</h3>
-            <h3>Type: {pokemon.type} {pokemon.type2}</h3>
+            <h3>
+              Type: {pokemon.type} {pokemon.type2}
+            </h3>
           </>
         )}
       </div>
@@ -217,6 +212,4 @@ console.log([pokemon].length)
   );
 }
 
-
-// {pokemon.type2} the second typing
 export default SearchPage;

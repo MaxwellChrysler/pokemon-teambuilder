@@ -125,17 +125,18 @@ function Details() {
 
         <img id="rendered-image" src={selectedPokemon.img} />
 
-        {determineGeneration(selectedPokemon.pokeID)}
       </div>
       <div className="graph" style={{ width: "425px", padding: "20px" }}>
         <Radar data={data} options={options}></Radar>
       </div>
+      <div className="details">
       <h3>
         {selectedPokemon.nickname} is from the{" "}
         {determineGeneration(selectedPokemon.pokeID)} generation and from the{" "}
         {getRegionFromGeneration(determineGeneration(selectedPokemon.pokeID))}{" "}
         region. and it weighs {selectedPokemon.weight}
       </h3>
+      </div>
     </div>
   );
 }
