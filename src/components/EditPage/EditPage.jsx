@@ -11,6 +11,7 @@ import { orange } from "@mui/material/colors";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import swal from "sweetalert";
+import Grid from "@mui/material/Grid";
 
 import "./EditPage.css";
 
@@ -49,7 +50,7 @@ function EditPage() {
       timer: 1001,
       button: false,
     });
-    console.log("testing params.id ", id, nickname);
+    console.log("testing params.id ", id);
     dispatch({
       type: "DELETE_POKEMON",
       payload: id,
@@ -80,22 +81,27 @@ function EditPage() {
       <button className="builderbutton" onClick={goToBuilder}>
         Return to view
       </button>
-      <div className="container">
-        {pokemon.map((pokemonItem, i) => (
-          <Card key={i} style={{ backgroundColor: "white" }}>
-            <PokemonItem selectedPokemon={pokemonItem} />
+      <div className="editContainer">
+      <Grid container spacing={5}>
+              {pokemon.map((pokemonItem, i) => (
+                <Grid item key={i} xs={12} sm={6} md={4}>
+                  <Card  sx={{ width: 360 }}
+                    // style={{ backgroundColor: "pink" }}
+                    >
+      <PokemonItem selectedPokemon={pokemonItem} />
             <CardActions>
               {click ? (
                 <>
                   <Button
-                    variant="contained"
+                    
                     onClick={() => deletePokemon(pokemonItem.id)}
                     size="small"
                   >
                     remove from team
                   </Button>
 
-                  <Button onClick={handleClick}>edit nickname</Button>
+                  <Button 
+                  variant="contained"onClick={handleClick}>edit nickname</Button>
                 </>
               ) : (
                 <>
@@ -120,7 +126,10 @@ function EditPage() {
               )}
             </CardActions>
           </Card>
+          </Grid>
+
         ))}
+        </Grid>
       </div>
     </div>
   );

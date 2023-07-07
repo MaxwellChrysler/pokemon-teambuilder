@@ -50,6 +50,8 @@ function Details() {
       },
     ],
   };
+
+
   const determineGeneration = (pokeID) => {
     if (pokeID <= 151) {
       return 1;
@@ -101,8 +103,8 @@ function Details() {
   const options = {
     scales: {
       r: {
-        max: 255,
-        min: 0,
+        suggestedMax: 80,
+        suggestedMin: 0,
         beginAtZero: true,
       },
     },
@@ -112,30 +114,27 @@ function Details() {
     return <div>You should add pokemon to your team</div>; // if theres nothing in the array it will display this instead of nothing
   }
 
-  // console.log(selectedPokemon, selectedPokemon.nickname);
-  // console.log(selectedPokemon.hp);
-
-  // console.log(params);
-
   return (
     <div>
-      <h2 className="name">{selectedPokemon.nickname}</h2>
       <div className="displayTeam">
         <PokemonItem selectedPokemon={selectedPokemon} />
-
-        <img id="rendered-image" src={selectedPokemon.img} />
-
       </div>
       <div className="graph" style={{ width: "425px", padding: "20px" }}>
         <Radar data={data} options={options}></Radar>
       </div>
       <div className="details">
-      <h3>
-        {selectedPokemon.nickname} is from the{" "}
-        {determineGeneration(selectedPokemon.pokeID)} generation and from the{" "}
-        {getRegionFromGeneration(determineGeneration(selectedPokemon.pokeID))}{" "}
-        region. and it weighs {selectedPokemon.weight}
-      </h3>
+        <img src={selectedPokemon.img} />
+        <div className="detailsText">
+          <h3>
+            {selectedPokemon.nickname} is from the{" "}
+            {determineGeneration(selectedPokemon.pokeID)} generation and from
+            the{" "}
+            {getRegionFromGeneration(determineGeneration(selectedPokemon.pokeID)
+            )}{" "}
+            region. {selectedPokemon.name} has a weight stat of{" "}
+            {selectedPokemon.weight}
+          </h3>
+        </div>
       </div>
     </div>
   );

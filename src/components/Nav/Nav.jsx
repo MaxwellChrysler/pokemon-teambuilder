@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { Link } from "react-router-dom";
+import LogOutButton from "../LogOutButton/LogOutButton";
+import "./Nav.css";
+import { useSelector } from "react-redux";
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -10,7 +10,13 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Pokemon Teambuilder</h2>
+        <h2 className="nav-title"></h2>
+        <div className="navPokemon">
+          <img
+          id="pokeNav"
+            src={` https://i0.wp.com/teknofun-entertainment.com/medias/uploads/2018/11/pokemon-logo-collection.png`}
+          />
+        </div>
         {/* Custom pokemon font/color */}
       </Link>
       <div>
@@ -28,17 +34,17 @@ function Nav() {
             <Link className="navLink" to="/user">
               Home
             </Link>
-{/* 
+            {/* 
             <Link className="navLink" to="/info">
               Info Page
             </Link> */}
 
             <Link className="navLink" to="/search">
-            Search
+              Search
             </Link>
 
             <Link className="navLink" to="/teambuilder">
-            Team View
+              Team View
             </Link>
 
             {/* <Link className="navLink" to="/editor"> no longer needed because this is accessed via the teambuilder page
@@ -48,8 +54,6 @@ function Nav() {
             {/* <Link className="navLink" to="details"> no longer needed becasue each pokemon have unique pages
           Details
             </Link> */}
-
-           
 
             <LogOutButton className="navLink" />
           </>

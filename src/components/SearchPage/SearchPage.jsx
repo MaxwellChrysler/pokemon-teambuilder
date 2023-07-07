@@ -31,7 +31,6 @@ function SearchPage() {
   const dispatch = useDispatch();
   const pokemonReducer = useSelector((store) => store.pokemon);
   const [pokemonName, setPokemonName] = useState("");
-
   const [pokemonChosen, setPokemonChosen] = useState(false); // this is to hold that data the this pokemon is the one that is currently being searched for
   const [pokemon, setPokemon] = useState({
     name: "",
@@ -75,20 +74,11 @@ function SearchPage() {
   const options = {
     scales: {
       r: {
-        max: 255,
-        min: 0,
+        suggestedMax: 80,
+        suggestedMin: 0,
         beginAtZero: true,
       },
     },
-  };
-
-  // currently unused. Will be for when the API isn't in the client side
-  const searchpoke = (event) => {
-    // rename after refactor
-    event.preventDefault();
-    console.log("search is:", pokemonName);
-    dispatch({ type: "FETCH_POKEMON", payload: pokemonName });
-    setPokemonName(""); // clear search bar after search is finished
   };
 
   const searchPokemon = () => {
@@ -124,6 +114,7 @@ function SearchPage() {
         console.log(pokemon);
 
         setPokemonChosen(true); //this is to change the poke to be chosen after its info has been displayed
+        setPokemonName("");
       })
       .catch((error) => {
         console.log("error in app getting pokemon", error);
@@ -156,17 +147,16 @@ function SearchPage() {
             // this will take in user data that is then used to plug in to the api's url for searching
           }}
         />
+        <button className="searchPokemon" onClick={searchPokemon}>
+          Search
+        </button>
       </header>
-      <br />
 
-      <button className="searchPokemon" onClick={searchPokemon}>
-        Search for Pokemon
-      </button>
       {/* if a poke is not chosen prompt user to pick one if they have display their name */}
 
       <div className="displayPokemon">
         {!pokemonChosen ? (
-          <h1>Search for Pokemon</h1>
+          <h1>Search to add members to your team</h1>
         ) : (
           // Top of the screen
 
@@ -174,7 +164,7 @@ function SearchPage() {
             <h1>{pokemon.name}</h1>
 
             {/* <img id="rendered-image" src={pokemon.shiny_img}/>  */}
-            <img id="rendered-image" src={pokemon.img} />
+            {/* <img id="rendered-image" src={pokemon.img} /> */}
             {/* <img id="rendered-image" src={pokemon.shiny_img} /> */}
             <img id="rendered-image" src={pokemon.officalArt} />
             {/* <img id="rendered-image" src={pokemon.officalArtShiny} /> */}
