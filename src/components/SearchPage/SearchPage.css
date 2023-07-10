@@ -37,24 +37,25 @@
   
     height:250px;
     width:250px;
+    
   }
   
   
   img {
   
-    height: 250px;
-    width: 250px;
+    height: 350px;
+    width: 350px;
     object-fit: fill;
   }
-  .graph{
-    align-items: center;
+  /* .graphs{ */
+    /* align-items: center;
     justify-content: center;
     display:flex;
     margin-left: auto;
     margin-right: auto;
      width: 8em
   
-  }
+  } */
   
   .App-header {
     background-color: #033076;
@@ -66,10 +67,16 @@
 
   .addtoteam{
     align-items: left;
-    justify-content: left;
+    justify-content: right;
     display: flex;
     margin-left: auto;
+text-align: center;
 
+    
+  }
+
+  .stat{
+    margin-top: -200px;
   }
   
   /* 

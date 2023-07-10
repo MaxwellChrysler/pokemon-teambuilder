@@ -144,12 +144,13 @@ let z=
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    {capitalizeFirstLetter(selectedPokemon.name)}
+                    {capitalizeFirstLetter(selectedPokemon.nickname)}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                  {capitalizeFirstLetter(selectedPokemon.nickname)}
+                  {capitalizeFirstLetter(selectedPokemon.name)}
                   {" is "}
                     {capitalizeFirstLetter(selectedPokemon.type)}
+                    {" type"}
                   
                   
                   </Typography>

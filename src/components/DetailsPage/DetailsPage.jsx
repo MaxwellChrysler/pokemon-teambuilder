@@ -4,6 +4,9 @@ import PokemonItem from "../PokemonItem/PokemonItem";
 import("./DetailsPage.css");
 import RadarChart from "../RadarChart/RadarChart";
 import { useParams } from "react-router-dom";
+import Card from "@mui/material/Card";
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 
 // import for chart js
 import {
@@ -34,9 +37,11 @@ function Details() {
 
   const data = {
     labels: ["Hp", "Attack", "Defense", "Speed", "Sp. Defense", "Sp. Attack"],
+    
     datasets: [
       {
         label: "Stats",
+        
         data: [
           selectedPokemon.hp,
           selectedPokemon.attack,
@@ -98,18 +103,76 @@ function Details() {
         return "Paldia";
     }
   }
-
-  // for the radar chart
-  const options = {
-    scales: {
-      r: {
-        suggestedMax: 80,
-        suggestedMin: 0,
-        beginAtZero: true,
+// for the radar chart
+const options = {
+  plugins: {
+    legend: {
+      labels: {
+        font: {
+          size: 16, // Specify the desired font size here
+        },
       },
     },
-  };
+  },
+  scales: {
+    r: {
+      suggestedMax: 80,
+      suggestedMin: 0,
+      beginAtZero: true,
+      pointLabels: {
+        font: {
+          size: 16, // Specify the desired font size here
+        },
+      },
+    },
+  },
+};
 
+
+
+  const getColor = (type) => {
+    switch (type) {
+      case "normal":
+        return "grey";
+      case "fire":
+        return "red";
+      case "water":
+        return "blue";
+      case "grass":
+        return "green";
+      case "electric":
+        return "yellow";
+      case "ice":
+        return "lightblue";
+      case "fighting":
+        return "orange";
+      case "poison":
+        return "purple";
+      case "ground":
+        return "brown";
+      case "flying":
+        return "skyblue";
+      case "psychic":
+        return "pink";
+      case "bug":
+        return "lime";
+      case "rock":
+        return "brown";
+      case "ghost":
+        return "darkviolet";
+      case "dark":
+        return "black";
+      case "dragon":
+        return "indigo";
+      case "steel":
+        return "silver";
+      case "fairy":
+        return "lightpink";
+      default:
+        return "grey"; // Default color
+    }
+  };
+  
   if (!pokemon || pokemon.length === 0) {
     return <div>You should add pokemon to your team</div>; // if theres nothing in the array it will display this instead of nothing
   }
@@ -117,15 +180,23 @@ function Details() {
   return (
     <div>
       <div className="displayTeam">
+      <Card
+                    sx={{ width: 360 }}
+                    style={{ backgroundColor: getColor(selectedPokemon.type) }}
+                  >
         <PokemonItem selectedPokemon={selectedPokemon} />
+        </Card>
       </div>
-      <div className="graph" style={{ width: "425px", padding: "20px" }}>
+      <div className="graph" style={{ width: "550px", padding: "20px" }}>
         <Radar data={data} options={options}></Radar>
       </div>
       <div className="details">
-        <img src={selectedPokemon.img} />
+       
+        <img  src={selectedPokemon.img} />
         <div className="detailsText">
+          
           <h3>
+            This is the rare shiny form. {" "}
             {selectedPokemon.nickname} is from the{" "}
             {determineGeneration(selectedPokemon.pokeID)} generation and from
             the{" "}

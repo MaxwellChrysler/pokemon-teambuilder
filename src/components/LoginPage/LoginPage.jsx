@@ -7,6 +7,10 @@ function LoginPage() {
   const history = useHistory();
 
   return (
+<>
+<div className='setlogin'></div>
+
+
     <div className="ps2" >
      
       <LoginForm />
@@ -24,6 +28,7 @@ function LoginPage() {
         </button>
       </center>
     </div>
+    </>
   );
 }
 

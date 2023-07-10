@@ -169,18 +169,21 @@ function SearchPage() {
             <img id="rendered-image" src={pokemon.officalArt} />
             {/* <img id="rendered-image" src={pokemon.officalArtShiny} /> */}
 
-            <div>
+            <div >
+            <h3 className="addtoteam"></h3>
               <img
                 id="rendered-image"
                 src={`https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Poké_Ball_icon.svg/2052px-Poké_Ball_icon.svg.png`}
                 className="addtoteam"
                 onClick={addToTeam}
               />
+           
             </div>
-            <div className="graph" style={{ width: "425px", padding: "20px" }}>
-              <Radar data={data} options={options}></Radar>
-            </div>
-
+            {/* <div className="graphs" style={{ width: "425px", padding: "20px" }}>
+              <Radar
+               data={data} options={options}></Radar>
+            </div> */}
+          <div className="stat">
             <h3>
               Spieces: {pokemon.species} ID: {pokemon.id}
             </h3>
@@ -195,6 +198,7 @@ function SearchPage() {
             <h3>
               Type: {pokemon.type} {pokemon.type2}
             </h3>
+            </div>
           </>
         )}
       </div>

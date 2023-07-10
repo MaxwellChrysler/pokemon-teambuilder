@@ -75,17 +75,60 @@ function EditPage() {
   const handleClick = () => {
     setClick(!click);
   };
+  const getColor = (type) => {
+    switch (type) {
+      case "normal":
+        return "grey";
+      case "fire":
+        return "red";
+      case "water":
+        return "blue";
+      case "grass":
+        return "green";
+      case "electric":
+        return "yellow";
+      case "ice":
+        return "lightblue";
+      case "fighting":
+        return "orange";
+      case "poison":
+        return "purple";
+      case "ground":
+        return "brown";
+      case "flying":
+        return "skyblue";
+      case "psychic":
+        return "pink";
+      case "bug":
+        return "lime";
+      case "rock":
+        return "brown";
+      case "ghost":
+        return "darkviolet";
+      case "dark":
+        return "black";
+      case "dragon":
+        return "indigo";
+      case "steel":
+        return "silver";
+      case "fairy":
+        return "lightpink";
+      default:
+        return "grey"; // Default color
+    }
+  };
 
   return (
     <div>
       <button className="builderbutton" onClick={goToBuilder}>
-        Return to view
+        Return to Team
       </button>
       <div className="editContainer">
       <Grid container spacing={5}>
               {pokemon.map((pokemonItem, i) => (
                 <Grid item key={i} xs={12} sm={6} md={4}>
                   <Card  sx={{ width: 360 }}
+                  style={{ backgroundColor: getColor(pokemonItem.type) }}
                     // style={{ backgroundColor: "pink" }}
                     >
       <PokemonItem selectedPokemon={pokemonItem} />
@@ -93,7 +136,7 @@ function EditPage() {
               {click ? (
                 <>
                   <Button
-                    
+                     variant="contained"
                     onClick={() => deletePokemon(pokemonItem.id)}
                     size="small"
                   >
@@ -105,7 +148,7 @@ function EditPage() {
                 </>
               ) : (
                 <>
-                  <Button onClick={handleClick}>cancel</Button>
+                  <Button  variant="contained" onClick={handleClick}>cancel</Button>
                   <Button
                     variant="contained"
                     size="small"

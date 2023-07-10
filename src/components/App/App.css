@@ -32,7 +32,8 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
+  /* background-color: #00acb0; */
+  background-color: #033076;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -55,7 +56,8 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  /* background-color: #008183; */
+  background-color: #164da5;
   text-decoration: none;
 }
 
@@ -98,7 +100,7 @@ Form Treatment
 .formPanel {
   box-sizing: border-box;
   width: 400px;
-  /* height: 300px; */
+  height: 300px;
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
@@ -107,11 +109,15 @@ Form Treatment
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.8);
   margin-top: 100px; 
  position: relative;
-top: 175px;
+top: 275px;
   padding-top: 50px;
 }
 
 input {
   margin: 5px;
   margin-bottom: 10px;
+}
+.l{
+  background-color: rgb(239, 239, 239, 0.01);
+border-color: rgb(239, 239, 239, 0.01);
 }

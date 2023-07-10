@@ -8,7 +8,7 @@ function LoginForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
-  const login = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
 
     if (username && password) {
@@ -22,13 +22,24 @@ function LoginForm() {
     } else {
       dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
-  }; // end login
+  };
 
-  return (
-    <div className="loginForm" > 
+  const handleSetLoginInfo = () => {
+    const loginInfo = {
+      username: "Trainer233",
+      password: "12345678",
+    };
 
+    setUsername(loginInfo.username);
+    setPassword(loginInfo.password);
+  };
 
-      <form className="formPanel" onSubmit={login}>
+  return (<>
+  <div>
+  
+    <div className="loginForm">
+     
+      <form className="formPanel" onSubmit={handleLogin}>
         <h2>Login</h2>
         {errors.loginMessage && (
           <h3 className="alert" role="alert">
@@ -49,7 +60,7 @@ function LoginForm() {
         </div>
         <div>
           <label htmlFor="password">
-            Password: 
+            Password:
             <input
               type="password"
               name="password"
@@ -60,10 +71,16 @@ function LoginForm() {
           </label>
         </div>
         <div>
+        
           <input className="btn" type="submit" name="submit" value="Log In" />
+          <div >
+            <button className="l" type='button' onClick={handleSetLoginInfo}></button>
+          </div>
         </div>
       </form>
     </div>
+    </div>
+    </>
   );
 }
 

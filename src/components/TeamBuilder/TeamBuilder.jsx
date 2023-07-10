@@ -100,7 +100,7 @@ function TeamBuilder() {
               {pokemon.map((selectedPokemon, i) => (
                 <Grid item key={i} xs={12} sm={6} md={4}>
                   <Card
-                    sx={{ width: 360 }}
+                    sx={{ width: 360, paddingTop: -10 }}
                     style={{ backgroundColor: getColor(selectedPokemon.type) }}
                   >
                     <PokemonItem selectedPokemon={selectedPokemon} />
