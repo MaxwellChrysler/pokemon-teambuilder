@@ -2,6 +2,15 @@
     background-size: cover;
   background-image: url("https://ssb.wiki.gallery/images/thumb/7/73/SSBU-Pok%C3%A9mon_Stadium_2.png/1200px-SSBU-Pok%C3%A9mon_Stadium_2.png");
 height: 1450px;
-margin-top: -100px;
+margin-top: -30px;
+
+}
+.regLink{
+  margin-top:250px;
+}
+.move{
+
+padding-top:  240px;
+
 
 }
