@@ -73,9 +73,9 @@ function LoginForm() {
         <div>
         
           <input className="btn" type="submit" name="submit" value="Log In" />
-          <div className="setLogin" >
+          {/* <div className="setLogin" >
             <button onClick={handleSetLoginInfo}></button>
-          </div>
+          </div> */}
         </div>
       </form>
     </div>
