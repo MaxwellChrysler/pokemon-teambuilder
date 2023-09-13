@@ -12,7 +12,6 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import swal from "sweetalert";
 import Grid from "@mui/material/Grid";
-
 import "./EditPage.css";
 
 function EditPage() {
