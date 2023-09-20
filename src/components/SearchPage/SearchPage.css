@@ -32,10 +32,7 @@ button {
   margin: 0 auto;
 }
 
-.rendered-image {
-  height: 250px;
-  width: 250px;
-}
+
 
 img {
   height: 350px;
@@ -49,7 +46,7 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 8em;
-  margin-top: 1%;
+  margin-top: -3%;
   margin-left: 10%;
   
   }
@@ -67,10 +64,21 @@ img {
   display: flex;
   margin-left: auto;
   text-align: center;
+  margin-top: -15%;
+
 }
 
 .stat {
-  margin-top: -200px;
+  margin-top: -1%;
+}
+.hide {
+  display: none;
+  
+}
+
+.myDIV:hover + .hide {
+  display: block;
+  color: red;
 }
 
 /* 
