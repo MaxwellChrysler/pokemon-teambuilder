@@ -109,7 +109,7 @@ const options = {
     legend: {
       labels: {
         font: {
-          size: 16, // Specify the desired font size here
+          size: 20, // Adjust the font size of the Legend 
         },
       },
     },
@@ -121,14 +121,14 @@ const options = {
       beginAtZero: true,
       pointLabels: {
         font: {
-          size: 16, // Specify the desired font size here
+          size: 22, // Adjust the font size of the labels
         },
       },
     },
   },
 };
 
-
+// This takes in the pokemons typing and changes the color of the boarder to match
 
   const getColor = (type) => {
     switch (type) {
@@ -174,7 +174,7 @@ const options = {
   };
   
   if (!pokemon || pokemon.length === 0) {
-    return <div>You should add pokemon to your team</div>; // if theres nothing in the array it will display this instead of nothing
+    return <div>You should add pokemon to your team</div>; // if theres nothing in the array it will display this instead of nothing. This should not occur but just in case
   }
 
   return (

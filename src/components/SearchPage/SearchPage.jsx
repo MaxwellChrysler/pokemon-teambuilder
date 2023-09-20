@@ -71,15 +71,30 @@ function SearchPage() {
     ],
   };
   // for the radar chart
-  const options = {
-    scales: {
-      r: {
-        suggestedMax: 80,
-        suggestedMin: 0,
-        beginAtZero: true,
+ 
+const options = {
+  plugins: {
+    legend: {
+      labels: {
+        font: {
+          size: 20, // Adjust the font size of the Legend 
+        },
       },
     },
-  };
+  },
+  scales: {
+    r: {
+      suggestedMax: 80,
+      suggestedMin: 0,
+      beginAtZero: true,
+      pointLabels: {
+        font: {
+          size: 12, // Adjust the font size of the labels
+        },
+      },
+    },
+  },
+};
 
   const searchPokemon = () => {
     // the ${pokemon} name is form usestate to dynaically change what the api is searching for based on the
@@ -168,10 +183,16 @@ function SearchPage() {
             {/* <img id="rendered-image" src={pokemon.shiny_img} /> */}
             <img id="rendered-image" src={pokemon.officalArt} />
             {/* <img id="rendered-image" src={pokemon.officalArtShiny} /> */}
+            <div className="graphs" style={{ width: "425px", padding: "20px" }}>
+              <Radar
+               data={data} options={options}></Radar>
+            </div>
 
-            <div >
-            <h3 className="addtoteam"></h3>
+            
+            <div className="addtoteam" >
+  
               <img
+              
                 id="rendered-image"
                 src={`https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Poké_Ball_icon.svg/2052px-Poké_Ball_icon.svg.png`}
                 className="addtoteam"
@@ -179,10 +200,7 @@ function SearchPage() {
               />
            
             </div>
-            {/* <div className="graphs" style={{ width: "425px", padding: "20px" }}>
-              <Radar
-               data={data} options={options}></Radar>
-            </div> */}
+         
           <div className="stat">
             <h3>
               Spieces: {pokemon.species} ID: {pokemon.id}
