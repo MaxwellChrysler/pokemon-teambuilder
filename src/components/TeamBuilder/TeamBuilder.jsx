@@ -95,18 +95,26 @@ function TeamBuilder() {
               {pokemon.map((selectedPokemon, i) => (
                 <Grid item key={i} xs={12} sm={6} md={4}>
                   <Card
-                    sx={{ width: 360, paddingTop: -10 }}
+                    sx={{ width: 360, paddingTop: -5 }}
                     style={{ backgroundColor: getColor(selectedPokemon.type) }}
                   >
                     <PokemonItem selectedPokemon={selectedPokemon} />
                     <CardActions>
                       <Button
-                        sx={{ marginLeft: 25 }}
+                        sx={{ marginLeft: 29, marginBottom:2 }}
                         variant="contained"
                         onClick={() => getDetails(selectedPokemon.id)}
                         className="detail"
                       >
                     Details
+                      </Button>
+                      <Button 
+                           sx={{ marginLeft: 29, marginBottom:2 }}
+                           variant="contained"
+                           onClick={goToEditor} className="editbutton">
+
+                        
+
                       </Button>
                     </CardActions>
                   </Card>

@@ -3,14 +3,14 @@
   flex-wrap: wrap;
   align-items: center;
   padding: 100px;
-  padding-left: 500px;
+  padding-left: 15%;
     
 }
 
 .editbutton {
   position: relative;
   top: -15px;
-  left: 2700px;
+  left: 90%;
   display: flex;
   color: #f2f2f2;
   background-color: #033076;
