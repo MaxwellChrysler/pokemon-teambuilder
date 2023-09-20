@@ -1,85 +1,79 @@
 .App {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .App-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  input {
-    padding: 5px 10px;
-    font-size: 16px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-  }
-  
-  .displayPokemon {
-    margin-top: 20px;
-    
-  }
-  
-  .displayPokemon h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .RadarChart-container {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  .rendered-image{
-  
-    height:250px;
-    width:250px;
-    
-  }
-  
-  
-  img {
-  
-    height: 350px;
-    width: 350px;
-    object-fit: fill;
-  }
-  /* .graphs{ */
-    /* align-items: center;
-    justify-content: center;
-    display:flex;
-    margin-left: auto;
-    margin-right: auto;
-     width: 8em
-  
-  } */
-  
-  .App-header {
-    background-color: #033076;
+  text-align: center;
+  padding: 20px;
+}
 
-    min-height: 70px;
-    padding: 20px;
-    color: rgb(255, 255, 255);
+.App-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.displayPokemon {
+  margin-top: 3%;
+}
+
+.displayPokemon h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.RadarChart-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.rendered-image {
+  height: 250px;
+  width: 250px;
+}
+
+img {
+  height: 350px;
+  width: 350px;
+  object-fit: fill;
+}
+.graphs{
+  align-items: center;
+  justify-content: center;
+  display:flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em;
+  margin-top: 1%;
+  margin-left: 10%;
+  
   }
 
-  .addtoteam{
-    align-items: left;
-    justify-content: right;
-    display: flex;
-    margin-left: auto;
-text-align: center;
+.App-header {
+  background-color: #033076;
+  min-height: 70px;
+  padding: 20px;
+  color: rgb(255, 255, 255);
+}
 
-    
-  }
+.addtoteam {
+  align-items: left;
+  justify-content: right;
+  display: flex;
+  margin-left: auto;
+  text-align: center;
+}
 
-  .stat{
-    margin-top: -200px;
-  }
-  
-  /* 
+.stat {
+  margin-top: -200px;
+}
+
+/* 
   .App-title {
     background-color: #5db9ff;
     width:100%;
@@ -90,8 +84,8 @@ text-align: center;
     color:white;
   
   } */
-  
-  /* .App-title input{
+
+/* .App-title input{
     width: 175px;
     height: 25px;
     border-radius: 10px;

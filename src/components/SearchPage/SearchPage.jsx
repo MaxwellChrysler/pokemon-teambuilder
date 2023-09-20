@@ -168,7 +168,10 @@ function SearchPage() {
             {/* <img id="rendered-image" src={pokemon.shiny_img} /> */}
             <img id="rendered-image" src={pokemon.officalArt} />
             {/* <img id="rendered-image" src={pokemon.officalArtShiny} /> */}
-
+            <div className="graphs" style={{ width: "425px", padding: "20px" }}>
+              <Radar
+               data={data} options={options}></Radar>
+            </div>
             <div >
             <h3 className="addtoteam"></h3>
               <img
@@ -179,10 +182,7 @@ function SearchPage() {
               />
            
             </div>
-            {/* <div className="graphs" style={{ width: "425px", padding: "20px" }}>
-              <Radar
-               data={data} options={options}></Radar>
-            </div> */}
+         
           <div className="stat">
             <h3>
               Spieces: {pokemon.species} ID: {pokemon.id}
