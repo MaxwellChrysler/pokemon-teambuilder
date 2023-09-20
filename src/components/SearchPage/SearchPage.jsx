@@ -89,7 +89,7 @@ const options = {
       beginAtZero: true,
       pointLabels: {
         font: {
-          size: 12, // Adjust the font size of the labels
+          size: 14, // Adjust the font size of the labels
         },
       },
     },
@@ -165,6 +165,8 @@ const options = {
         <button className="searchPokemon" onClick={searchPokemon}>
           Search
         </button>
+
+        
       </header>
 
       {/* if a poke is not chosen prompt user to pick one if they have display their name */}
@@ -183,7 +185,7 @@ const options = {
             {/* <img id="rendered-image" src={pokemon.shiny_img} /> */}
             <img id="rendered-image" src={pokemon.officalArt} />
             {/* <img id="rendered-image" src={pokemon.officalArtShiny} /> */}
-            <div className="graphs" style={{ width: "425px", padding: "20px" }}>
+            <div className="graphs" style={{ width: "525px", padding: "20px", height:"400px" }}>
               <Radar
                data={data} options={options}></Radar>
             </div>
@@ -202,10 +204,8 @@ const options = {
             </div>
          
           <div className="stat">
-            <h3>
-              Spieces: {pokemon.species} ID: {pokemon.id}
-            </h3>
-
+         
+            <h3>ID: {pokemon.id}</h3>
             <h3>HP: {pokemon.hp}</h3>
             <h3>Attack: {pokemon.attack}</h3>
             <h3>Defense: {pokemon.defense}</h3>

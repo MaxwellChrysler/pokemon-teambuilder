@@ -46,7 +46,7 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 8em;
-  margin-top: -3%;
+  margin-top: -5%;
   margin-left: 10%;
   
   }
@@ -70,6 +70,7 @@ img {
 
 .stat {
   margin-top: -1%;
+  text-align: center;
 }
 .hide {
   display: none;
@@ -100,3 +101,5 @@ img {
     border:2px solid #4ca8ee;
     font-size:10px;
   } */
+
+  
